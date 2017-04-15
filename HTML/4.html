@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      font-size: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 360px;
+      margin: 0 auto
+    }
+
+    ul>li>p>span:first-child {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+      margin-right: 15px;
+    }
+
+    h1 {
+      margin-left: 40px;
+      border-left: 4px solid #ddd;
+      padding-left: 12px;
+      font-size: 24px
+    }
+
+    button {
+      width: 100%;
+      height: 40px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .text {
+      margin: 10px auto 10px;
+      background-color: #f1f1f1;
+      width: 500px;
+      padding: 40px 0 45px 0;
+      overflow: hidde n;
+      border-radius: 4px;
+      box-shadow: 7px 6px 6px #d8d8d8;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .textarea {
+      display: flex
+    }
+
+    input,
+    textarea {
+      font-family: inherit;
+      border-radius: 3px;
+      border: 1px solid #aaa;
+      padding: 3px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="text">
+    <h1>标题</h1>
+    <ul>
+      <li>
+        <p><span>请输入邮箱密码</span><span><input type="text" placeholder="输入框"></span></p>
+      </li>
+      <li>
+        <p><span></span><span>邮箱地址</span></p>
+      </li>
+      <li>
+        <p><span>请输入密码</span><span><input type="password" placeholder="12345678"></span></p>
+      </li>
+      <li>
+        <p><span>请重复输入密码</span><span><input type="password" placeholder="12345678"></span></p>
+      </li>
+      <li>
+        <p><span></span><span>密码为6-16</span></p>
+      </li>
+      <li>
+        <p><span>性别</span><span>
+          <input type="radio">男
+          <input type="radio">女
+          </span></p>
+      </li>
+      <li>
+        <p><span>城市</span><span>
+          <select>
+            <option value="">beijing</option>
+            <option value="">beijing</option>
+            <option value="">beijing</option>
+            <option value="">beijing</option>
+          </select>
+          </span></p>
+      </li>
+      <li>
+        <p><span>爱好</span><span>
+          <input type="checkbox">yundong
+          <input type="checkbox">yundong
+          <!--<input type="checkbox">yundong-->
+          </span></p>
+      </li>
+      <li>
+        <p class="textarea"><span>个人描述</span><span><textarea rows="4" cols="" placeholder="这是一个框"></textarea></span></p>
+      </li>
+      <li>
+        <p><button type="">确认提交</button></p>
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>时间最美</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: "microsoft yahei", sans-serif;
+		}
+
+		html,
+		body,
+		article {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			-webkit-user-select: none;
+			-ms-select: none;
+			select: none;
+		}
+
+		section {
+			width: 100%;
+			height: 100%;
+		}
+
+		.logo {
+			position: absolute;
+			left: 100px;
+			top: 16px;
+			display: inline;
+		}
+
+		article {
+			display: block;
+		}
+
+		#home {
+			clear: both;
+			width: 100%;
+			min-width: 100%;
+			height: 100%;
+			margin: 0px auto;
+			background-color: #ccc;
+			overflow: hidden;
+			background-image: url('bg.jpg');
+			background-repeat: no-repeat;
+			/*background-position: 0% 50%;*/
+			background-size: cover;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#warp_body {
+			text-align: center;
+			font-size: 50px;
+			font-weight: 500;
+			color: #fff
+		}
+
+		#home_button {
+			clear: both;
+			margin: 50px auto 0;
+			width: 220px;
+			height: 60px;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: #1e90ff;
+			text-align: center;
+			border-radius: 8px;
+			border: none;
+			color: #fff;
+			font-size: 22px;
+			font-weight: 400;
+		}
+
+		#section2 {
+			position: absolute;
+			top: 0;
+			display: none;
+		}
+
+		#section2>video {
+			padding: 40px 0;
+			margin: 18px auto;
+			width: 80%;
+			display: block;
+			position: relative;
+		}
+
+		#home>audio {
+			position: absolute;
+			right: 12px;
+			bottom: 12px
+		}
+
+		article>nav {
+			position: absolute;
+			width: 100%;
+			height: 50px;
+			z-index: 99;
+			line-height: 50px;
+		}
+
+		article>nav>ul {
+			list-style: none;
+			text-decoration: none;
+			margin-right: 150px;
+		}
+
+		article>nav>ul>li {
+			list-style: none;
+			float: right;
+			margin: 0px 42px 20px;
+			line-height: 80px;
+			text-decoration: none;
+		}
+
+		article>nav>ul>li>a {
+			text-decoration: none;
+
+			font-size: 13px;
+			color: #ccc;
+			font-weight: 300;
+			transition: color 1s;
+		}
+
+		article>nav>ul>li>a:hover {
+			color: #fff;
+		}
+
+		#lit>p {
+			font-size: 18px;
+		}
+
+		#play {
+			width: 94px;
+			height: 94px;
+			position: relative;
+			margin: 30px auto;
+			cursor: pointer;
+		}
+
+		#sql {
+			margin: 3px auto;
+			width: 90px;
+			height: 90px;
+			border-radius: 45px;
+			background-color: transparent;
+			border: 2px solid #fff;
+		}
+
+		#san {
+			position: relative;
+			top: -80px;
+			left: 30px;
+			margin: 3px auto;
+			border-left: 50px solid #fff;
+			border-right: 50px solid transparent;
+			border-top: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+		}
+
+		#close {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			right: 6px;
+			top: 12px;
+		}
+
+		#ls {
+			z-index: 1051;
+			width: 1px;
+			height: 75px;
+			margin-left: 35px;
+			background-color: #222;
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}
+
+		#lr {
+			z-index: 1051;
+			width: 1px;
+			height: 75px;
+			margin-top: -74px;
+			margin-left: 35px;
+			background-color: #222;
+			-webkit-transform: rotate(-45deg);
+			-ms-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+		}
+
+		.slogon {
+			font-weight: 300;
+			margin: 60px 30px 10px;
+			font-size: 59px;
+		}
+	</style>
+</head>
+
+<body>
+	<header></header>
+	<article id="art">
+		<nav>
+			<ul>
+				<li class="logo">
+					<a href="#"><img src="m.gif" width="40" height="40"></a>
+				</li>
+				<li><a href="http://qzone.com/" target="_blank">ABOUT</a></li>
+				<li><a href="#section2" onclick="hidden_main()">VIDEO</a></li>
+				<li><a href="#">HOME</a></li>
+			</ul>
+		</nav>
+		<section id="home">
+			<audio id="mi" src="bgm.mp3" controls="controls" autoplay loop>
+			</audio>
+			<div id="warp_body" onclick="hidden_main()">
+				<div id="play">
+					<div id="sql"></div>
+					<div id="san"></div>
+				</div>
+				<p class="slogon">记录生活·分享感动</p>
+				<span id='lit'><p>SHARE AND RECORDE</p></span>
+			</div>
+		</section>
+	</article>
+	<section id="section2">
+		<a href="#" onclick="close_main()">
+			<div id="close">
+				<div id="ls"></div>
+				<div id="lr"></div>
+			</div>
+		</a>
+		<video id="mv" src="timeless_beauty.mp4" controls="controls"></video>
+
+	</section>
+</body>
+<script type="text/javascript">
+	function hidden_main() {
+		document.getElementById('art').style.display = "none";
+		document.getElementById('mi').pause();;
+		document.getElementById('section2').style.display = "block";
+		document.getElementById('mv').play();
+	}
+
+	function close_main() {
+		var s1 = document.getElementById('art').style.display = "block";
+		var mi = document.getElementById('mi').play();
+		var t1 = document.getElementById('section2').style.display = "none";
+		var t3 = document.getElementById('mv').pause();
+	}
+</script>
+
+</html>

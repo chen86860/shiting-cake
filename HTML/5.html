@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      min-width: 1000px;
+    }
+
+    .lll {
+      position: relative;
+      border-bottom: 1px solid #000
+    }
+
+    .lll>span:first-child {
+      background-color: #de6830;
+      display: inline-block;
+      width: 150px;
+      padding-top: 50px;
+      padding-left: 8px;
+      color: #fff
+    }
+
+    .time {
+      position: absolute;
+      top: 50px;
+      right: 0;
+    }
+
+    .qqq {
+      display: flex;
+    }
+
+    .qqq>span {
+      display: inline-block;
+      width: 25%;
+    }
+
+
+    .qqq>span:first-child {
+      display: inline-block;
+      width: 75%
+    }
+
+    .qqq>span:first-child>img {
+      width: 100%
+    }
+
+    .flex-test {
+      display: flex
+    }
+
+    .flex-test>div {
+      background-color: #f00;
+      width: 25%;
+      height: 400px;
+    }
+
+    .flex-test>div:first-child {
+      background-color: #0f0;
+      width: 75%;
+    }
+
+    .about {
+      text-decoration: underline;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .tecgnologe {
+      text-decoration: underline;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .shuzi {
+      margin: 0;
+      font-size: 120px;
+      color: rgba(43, 154, 43, 0.61);
+      font-style: italic;
+    }
+
+    .www {
+      margin: 0;
+      font-size: 60px;
+      color: #f57e7e;
+    }
+
+    .warp {
+      display: flex;
+    }
+
+    .box {
+      width: 25%;
+      height: 300px;
+      margin: 20px;
+    }
+
+    .box>h4 {
+      margin: 5px;
+      margin-left: -2px;
+      font-size: 18px;
+      text-decoration: underline;
+    }
+
+    .box1>h4 {
+      color: rgb(0, 255, 0);
+    }
+
+    .box2>h4 {
+      color: rgb(255, 128, 128);
+    }
+
+    .box3>h4 {
+      color: rgb(0, 128, 128);
+    }
+
+    .warp2 {
+      display: flex;
+      width: 100%;
+      height: 400px;
+      overflow: hidden
+      /*background-color: #5d5d5d;*/
+    }
+
+    .warp2>div {
+      width: 50%;
+      height: 100%;
+      margin: 10px;
+      /*background-color: #f00;*/
+    }
+
+    .content {
+      top: 0;
+      padding-top: 0;
+      float: left
+    }
+
+    .content>p {
+      display: inline-block;
+    }
+
+    .content>p::first-letter {
+      /*vertical-align: top;*/
+      font-size: 35px;
+    }
+
+    .warp3 {
+      /*background-color: #f57e7e;*/
+      margin: 30px;
+    }
+
+    .warp3>div {
+      width: 100%;
+
+      margin: 10px;
+      /*background-color: #f00;*/
+    }
+
+    .warp3>div:last-child {
+      width: 50%;
+      position: absolute;
+      min-width: 500px;
+      /*height: 800px !important;*/
+      /*padding: 10px;*/
+      background-color: #f7f7f7;
+    }
+
+    .warp3>div:first-child {
+      height: 50%;
+      background-image: url('bg.jpg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: 50%;
+      position: relative;
+      /*background-size: 100px;*/
+    }
+
+    .pic-1 {
+      margin: 0 auto;
+      padding: 0 10px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      height: 60px;
+      background-color: rgba(255, 255, 255, 0.3);
+      line-height: 60px;
+    }
+
+    .pic-1>span:first-child {
+      border-left: 3px solid #0f0;
+      padding-left: 10px;
+      color: #fff;
+      font-size: 26px;
+    }
+
+    .pic-2 {
+      min-height: 300px;
+    }
+
+    .pic-2>ul {
+      padding: 10px 30px 10px;
+      margin: 0;
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .pic-2-info {
+      display: flex;
+    }
+
+    .pic-2-info>div {
+      width: 45%;
+      line-height: 100%;
+      margin: 0;
+      padding: 4px;
+    }
+
+    .pic-2-info>div:first-child {
+      background-color: #f57e7e;
+    }
+
+    .pic-2-info>div:first-child>p:first-child {
+      color: #fff;
+      font-size: 40px;
+    }
+
+    .pic-2-info>div>span {
+      font-size: 12px;
+    }
+
+    .pic-2-info>div {
+      display: flex;
+      line-height: 20px;
+      align-items: center;
+      /*jus*/
+    }
+
+    .pic-2-info>div>span:first-child {
+      font-size: 60px;
+      padding: 10px;
+      color: #fff;
+    }
+
+    .pic-2-info>div>span:last-child {
+      border-left: 3px solid #fff;
+      padding-left: 10px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .pic-2-info>div>span:last-child>span:last-child {
+      font-size: 12px;
+    }
+
+    .pic-2-info>div:first-child>p>span>p:last-child {
+      font-size: 12px;
+    }
+
+    .pic-2-info>div:last-child>p {
+      font-style: inherit;
+      color: #ddd;
+    }
+
+    .pic-2-info>div:last-child>p>span {
+      font-size: 22px;
+      color: #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="lll">
+    <span>ife.baidu.com</span>
+    <span class="time">2016.1</span>
+  </div>
+  <div class="qqq">
+    <span><img src="bg.jpg" alt=""></span>
+    <span>
+      <p class="about">About</p>
+      <p class="tecgnologe">tecgnologe</p>
+      <p style="font-size:8px">About About About About About About</p>
+      <p class="shuzi">700</p>
+      <p class="www">3.2</p>
+    </span>
+  </div>
+  <div class="warp">
+    <div class="box box1">
+      <h4>What</h4>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</div>
+    <div class="box box2">
+      <h4>When</h4>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</div>
+    <div class="box box3">
+      <h4>How</h4>
+      <div>前端前端前端前端前端前端前端前端</div>
+      <div>
+        <ul style="list-style:none;margin:0;padding:0;margin-top:30px">
+          <li>What------<span style="color:#f57e7e;font-style:italic;">40%</span></li>
+          <li>What------<span style="color:#f57e7e;font-style:italic;">40%</span></li>
+          <li>What------<span style="color:#f57e7e;font-style:italic;">40%</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="box box4"></div>
+  </div>
+  <div class="warp2">
+    <div>
+      <h1>THE TECHNOLOHE OF FRONT</h1>
+      <h2>前端技术领域</h2>
+      <hr>
+      <div class="content">
+        <p>
+          前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端 前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+          前端前端前端前端前端前端
+        </p>
+      </div>
+    </div>
+    <div class="warp3">
+      <div>
+        <p class="pic-1">
+          <span>前端技术</span>
+          <span>前端技术前端技术</span></p>
+      </div>
+      <div class="pic-2">
+        <ul>
+          <li>
+            <p>*前段前端前端————————————————前段</p>
+          </li>
+          <li>
+            <p>*前段前端前端—————————————————前段</p>
+          </li>
+          <li>
+            <p>*前段前端前端——————————————————————前段</p>
+          </li>
+        </ul>
+        <div class="pic-2-info">
+          <div>
+            <span>0</span>
+            <span>
+                <span>ONE TWO</span><br>
+            <span>THREE FOUR FIVE</span><br>
+            <span>hello world hello world</span>
+            </span>
+          </div>
+          <div>
+            <p>
+              <span>“</span> hello world hello world hello world hello world hello world hello world hello world hello world
+              hello world hello world
+              <span>”</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
