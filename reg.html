@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+    注册
+  </title>
+  <style type="text/css">
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Microsoft YaHei', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    header {
+      width: 100%;
+      height: 100px;
+    }
+
+    .headerTopArea {
+      z-index: 99;
+      padding: 0 60px;
+      height: 20px;
+      line-height: 20px;
+      margin: 0 auto;
+      position: relative;
+      background-color: #eee;
+      border-bottom: 1px solid #CAC2C2;
+    }
+
+    .headerTopLeft {
+      color: #999;
+      font-size: 12px;
+    }
+
+    .headerTopRight {
+      position: relative;
+      top: -38px;
+      float: right;
+      right: 80px;
+      display: inline-block;
+      text-align: right;
+    }
+
+    .headerTopRight>ul {
+      list-style: none;
+      height: 20px;
+    }
+
+
+    .headerTopRight>ul>li {
+      margin: 0 8px 0;
+      float: left;
+    }
+
+    .headerTopRight>ul>li>a {
+      text-decoration: none;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .headerTopRight>ul>li>a:hover {
+      color: #f10582;
+    }
+
+    .logoArea {
+      width: 91%;
+      margin: 0 auto;
+      height: 80px;
+    }
+
+    .miaLogo {
+      width: 80px;
+      height: 70px;
+      padding-top: 0px;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    .miaLogo>a>img {
+      width: 100%;
+      margin-top: -15px;
+    }
+
+
+    .miaFootercon {
+      width: 1100px;
+      /* width: 100%; */
+      margin: 0 auto 20px;
+      height: 120px;
+      min-width: 1100px;
+      /* background-color: #ddd; */
+      display: block;
+    }
+
+    .miaFootercon>ul {
+      display: block;
+      list-style: none;
+      float: left;
+      margin: 0 40px;
+    }
+
+    .links {
+      font-weight: 600;
+    }
+
+    .miaFootercon>ul>a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .miaFootercon>ul>li>a:visited {
+      color: #000;
+    }
+
+    .miaFootercon>ul>li>a:hover {
+      color: #E91E63;
+    }
+
+    .miaFootercon>ul>li {
+      font-size: 14px;
+    }
+
+    .miaFooter_center,
+    .footer_copyright {
+      text-align: center;
+    }
+
+    footer {
+      clear: both;
+      width: 1100px;
+      width: 100%;
+      position: relative;
+      height: 120px;
+      font-size: 14px;
+      color: #6c6c6c;
+      /*background-color: #1D1D1D;*/
+      border-top: 1px solid #ddd;
+      bottom: 0;
+      font-size: 12px;
+      margin-top: 90px;
+      top: 80px;
+    }
+
+    .footer_con>a {
+      color: #6c6c6c;
+      font-size: 12px;
+    }
+
+    .footer_copy_con {
+      font-size: 12px;
+    }
+
+    .footer_copy_con>a {
+      color: #6c6c6c;
+      font-size: 12px;
+    }
+
+    .all_goods {
+      padding: 16px 174px 14px;
+      font-size: 12px;
+    }
+
+    .warp {
+      width: 80%;
+      margin: 0px auto;
+      min-width: 1000px;
+      position: relative;
+      border: 1px solid #e9e9e9;
+      border-radius: 8px;
+      min-height: 670px;
+      /*box-shadow:2px  2px 2px #c6c6c6;*/
+    }
+
+    .submitform>ul {
+      list-style: none;
+    }
+
+    .submitform>ul>li>p {
+      font-size: 15px;
+      text-align: right;
+      margin: 8px auto;
+      position: relative;
+    }
+
+    .submitform>ul>li>p>span>input {
+      margin-left: 8px;
+    }
+
+    .submitform>ul>li {
+      position: relative;
+      position: inherit;
+    }
+
+    .submitform {
+      width: 80%;
+      position: relative;
+      margin: 0px auto;
+    }
+
+    .submitform>ul {
+      padding-left: 0;
+    }
+
+    .return_home_p {
+      margin-top: 60px;
+    }
+
+    .return_home {
+      text-decoration: none;
+      color: #000;
+      margin-top: 60px;
+    }
+
+    .return_home:hover {
+      color: #E91E63;
+    }
+
+    .subHeader {
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      padding: 21.5px 0 20px 0;
+      border-bottom: 1px solid #e9e9e9;
+    }
+
+    .subLable>ul {
+      list-style: none;
+    }
+    /*#stuCardImg_upload["text"]*/
+
+    #ValidateCodeImg {
+      width: 80px;
+      z-index: 99;
+      height: 26px;
+      display: inline-block;
+      float: right;
+      top: -29px;
+      position: relative;
+      right: 3px;
+      border-top: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
+      border-radius: 3px;
+      border-left: 1px solid #dddddd;
+    }
+
+    input[type=text] {
+      width: 220px;
+      height: 35px;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+    }
+
+    input[type=password] {
+      width: 220px;
+      height: 35px;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+    }
+
+    #txtValidateCodeErro {
+      clear: both;
+      width: 200px;
+      height: 30px;
+      display: block;
+      position: relative;
+      top: -52px;
+      left: 200px;
+      font-size: 14px;
+      color: #FF6262;
+    }
+
+    #stuCardImg_upload_info,
+    #stuIDImg_upload_info,
+    #stuCardImg_upload_info_erro,
+    #stuIDImg_upload_info_erro {
+      width: 206px;
+      min-height: 26px;
+      display: block;
+      font-size: 14px;
+      text-align: center;
+      line-height: 26px;
+      background-color: #5DA30C;
+      color: #fff;
+      margin-left: 77px;
+      padding: 5px;
+      border-radius: 3px;
+      word-wrap: break-word;
+    }
+
+    .content {
+      width: 100%;
+      position: relative;
+    }
+
+    .submitform {
+      float: left;
+      width: 30%;
+    }
+
+    .decript {
+      width: 50%;
+      float: right;
+      position: relative;
+      font-size: 15px;
+    }
+
+    .decript>ul {
+      list-style: none
+    }
+
+    .decript_title {
+      font-size: 22px;
+      font-weight: 300;
+      text-indent: 1em;
+    }
+
+    .subBtn {
+      text-align: right;
+    }
+
+    #btn_reg {
+      font-weight: 500;
+      padding: 5px 8px;
+      border-radius: 4px;
+      width: 72px;
+      color: #fff;
+      background-color: #2196F3;
+      font-size: 15px;
+      /* position: relative; */
+      border: 1px solid transparent;
+    }
+
+    input {
+      padding-left: 3px;
+      outline: none;
+    }
+
+    .regiter_warp {
+      margin: -20px auto;
+      width: 90%;
+      clear: both;
+      height: 500px;
+      width: 1100px;
+    }
+
+    #form1 {
+      width: 100%;
+      height: 100%
+    }
+
+    .regiter_title {
+      font-size: 24px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+      margin-top: 0;
+      padding-left: 20px;
+    }
+
+    .submitform>ul>li>p>label>span {
+      font-size: 12px;
+      color: #fa5656
+    }
+
+    #btn_reg {
+      width: 228px;
+      line-height: 28px;
+      height: 28px;
+      text-decoration: none;
+      width: 60px;
+      text-align: center;
+      display: inline-block;
+      border-radius: 3px;
+      border: none;
+      border: 1px solid #E91E63;
+      color: #fff;
+      background-color: #E91E63;
+    }
+
+    .succeed_reg {
+      width: 90%;
+      clear: both;
+      margin: 0 auto;
+    }
+
+    .succeed_reg>p {
+      text-align: center;
+    }
+
+    .succeed_reg_title {
+      font-size: 28px;
+      color: #333;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .dir_login,
+    .dir_login>a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #6c6c6c;
+    }
+
+    .dir_login>a:hover {
+      color: #E91E63
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" action="./regiter.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+      <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMjg2MzUzMTg3D2QWAgIDD2QWAgIDDxYCHgdWaXNpYmxlaGRk1S1R4rNNjl8kMabkTIow4mufCZW5qrxS8lP+ByEblsI="
+      />
+    </div>
+
+    <header>
+      <div class="logoArea">
+        <div class="miaLogo">
+          <a href="index.html" id="logo" title="返回首页">
+            <img src="./img/logo.png" alt="M&S商城" /></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="regiter_warp">
+      <p class="regiter_title">欢迎注册M&S商城</p>
+      <div class="submitform">
+        <ul>
+          <li>
+            <p>
+              <label>用户名</label>
+              <span>
+                                    <input name="tbx_user" type="text" id="tbx_user" /></span><br />
+              <label>
+                                    <span id="RegularExpressionValidator2" style="visibility:hidden;">用户名格式不正确</span><span id="RequiredFieldValidator1" style="visibility:hidden;">请输入用户名</span>
+                                </label>
+            </p>
+          </li>
+          <li>
+            <p>
+              <label>密码</label>
+              <span>
+                                    <input name="tbx_psw" type="password" id="tbx_psw" /></span><br />
+              <label>
+                                    <span id="RegularExpressionValidator4" style="visibility:hidden;">密码格式不正确</span><span id="RequiredFieldValidator2" style="visibility:hidden;">请输入密码</span>
+                                </label>
+            </p>
+          </li>
+          <li>
+            <p>
+              <label>重复密码</label>
+              <span>
+                                    <input name="tbx_psw_confirm" type="password" id="tbx_psw_confirm" /></span><br
+              />
+              <label>
+                                    <span id="CompareValidator1" style="visibility:hidden;">两次密码不一致</span>
+                                </label>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <label>名号</label>
+              <span>
+                                    <input name="tbx_nickname" type="text" id="tbx_nickname" /></span><br />
+              <label>
+                                    <span id="RequiredFieldValidator3" style="visibility:hidden;">第一印象很重要，起个响亮的名号吧</span>
+                                </label>
+            </p>
+          </li>
+          <li>
+            <p>
+              <label>邮箱</label>
+              <span>
+                                    <input name="tbx_email" type="text" id="tbx_email" /></span>
+              <br />
+              <label>
+                                    <span id="RegularExpressionValidator1" style="visibility:hidden;">请输入正确的邮箱</span>
+                                </label>
+            </p>
+          </li>
+          <li>
+            <p>
+              <label>手机号码</label>
+              <span>
+                                    <input name="tbx_phone" type="text" id="tbx_phone" /></span><br />
+              <span id="RegularExpressionValidator3" style="visibility:hidden;">请输入正确的手机号</span>
+              <label>
+                                </label>
+            </p>
+          </li>
+          <li>
+            <span class="subBtn">
+                                <p class="subBtn">
+                                    <a id="btn_reg" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btn_reg&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">注册</a>
+                                </p>
+                            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="decript">
+        <ul>
+          <li>
+            <p class="dir_login">>已经拥有M&S帐号？<a href="login.html">直接登录</a></p>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+
+
+    <footer>
+      <div class="miaFooter_center">
+        <div class="footer_con" id="footer_link" style="padding-top: 15px;">
+          <a href="#">关于M&S网上商城</a>
+          <a href="#">INVESTOR RELATIONS</a>
+          <a href="#">商家入驻</a>
+          <a href="#">获取更新</a>
+          <a href="#">加入M&S</a>
+          <a href="#">品牌合作专区</a>
+          <a href="#">网站联盟</a>
+          <a href="#">媒体报道</a>
+          <a href="#">商务合作</a>
+        </div>
+      </div>
+      <div id="footer_copyright" class="footer_copyright">
+        <div class="footer_con">
+          <p class="footer_copy_con">
+            COPYRIGHT &copy; 2015 五邑大学学生宿舍XX栋XX室 YILIN.COM 保留一切权利。 客服热线：400-0000-8888
+            <br /> 京公网安备 11010102001226 | <a href="#">京ICP证12345678号</a> | <a href="#">营业执照</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    </script>
+  </form>
+
+</body>
+
+</html>

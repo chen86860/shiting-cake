@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <style>
+        body {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        input[type="checkbox"] {
+            outline: none;
+        }
+
+        .shop-car-wrap {
+            width: 1000px;
+            margin: 50px auto;
+        }
+
+        .list-head {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            background: #f3f3f3;
+        }
+
+
+        .list-good-wrap {
+            display: flex;
+            width: 100%;
+            background: #f3f3f3;
+            border-top: 1px solid #ccc;
+            padding: 15px 0 15px;
+        }
+
+        .list-head-1 {
+            width: 10%;
+            align-items: center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .list-head-2 {
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .list-good a {
+            text-decoration: none;
+            color: #444;
+            align-self: flex-start;
+        }
+
+        .list-good a:hover {
+            color: #dd00dd;
+        }
+
+        .list-good p {
+            margin: 0
+        }
+
+        .list-good-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            width: 100px;
+            box-sizing: border-box;
+        }
+
+        .list-good-img img {
+            width: 100%;
+        }
+
+        .list-btn-count {
+            display: flex;
+            align-items: center;
+        }
+
+        .list-btn-count input {
+            width: 20px;
+            border: 1px solid #cacaca;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+        }
+
+        .list-btn-count button {
+            border: 1px solid #cacaca;
+            background-color: #fff;
+            color: #cacaca;
+            outline: none
+        }
+
+        .shop-cls {
+            width: 100%;
+            text-align: right;
+        }
+
+        .shop-cls-btn-wrap>button {
+            background-color: #d65164;
+            border: 0;
+            width: 10%;
+            color: #fff;
+            padding: 10px 0 10px;
+            font-size: 16px;
+            text-align: center;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+        }
+
+        header {
+            height: 80px;
+            width: 100%;
+            line-height: 100%;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo>a {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            margin-left: 100px;
+            outline: none;
+        }
+
+        .logo>a>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="">
+            </a>
+        </div>
+    </header>
+    <div class="shop-car-wrap">
+        <div class="list-head">
+            <div class="list-head-1"><input type="checkbox" name="" value="">全选</div>
+            <div class="list-head-2">商品</div>
+            <div class="list-head-1">单价</div>
+            <div class="list-head-1">数量</div>
+            <div class="list-head-1">小计</div>
+            <div class="list-head-1">操作</div>
+        </div>
+        <div class="list-body">
+            <div class="list-good-wrap">
+                <div class="list-head-1"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-2 list-good">
+                    <a href="" class="list-good-img">
+                        <img src="img/goods/1.png" alt="">
+                    </a>
+                    <a href="">
+                        <p>
+                            特浓巧克力蛋糕特浓巧克力蛋糕
+                        </p>
+                    </a>
+                </div>
+                <div class="list-head-1">¥ 88.00</div>
+                <div class="list-head-1">
+                    <span class="list-btn-count">
+                    <button type="" class="_addBtn">-</button>
+                    <input type="text" value="1">
+                    <button class="addBtn">+</button>
+                </span>
+                </div>
+                <div class="list-head-1">¥
+                    <span class="list-price">
+                    88.00
+                </span>
+                </div>
+                <div class="list-head-1">
+                    <a href="">
+                    删除
+                </a>
+                </div>
+            </div>
+            <div class="list-good-wrap">
+                <div class="list-head-1"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-2 list-good">
+                    <a href="" class="list-good-img">
+                        <img src="img/goods/1.png" alt="">
+                    </a>
+                    <a href="">
+                        <p>
+                            特浓巧克力蛋糕特浓巧克力蛋糕
+                        </p>
+                    </a>
+                </div>
+                <div class="list-head-1">¥ 88.00</div>
+                <div class="list-head-1">
+                    <span class="list-btn-count">
+                    <button type="" class="_addBtn">-</button>
+                    <input type="text" value="1">
+                    <button class="addBtn">+</button>
+                </span>
+                </div>
+                <div class="list-head-1">¥
+                    <span class="list-price">
+                    88.00
+                </span>
+                </div>
+                <div class="list-head-1">
+                    <a href="">
+                    删除
+                </a>
+                </div>
+            </div>
+            <div class="list-good-wrap">
+                <div class="list-head-1"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-2 list-good">
+                    <a href="" class="list-good-img">
+                        <img src="img/goods/1.png" alt="">
+                    </a>
+                    <a href="">
+                        <p>
+                            特浓巧克力蛋糕特浓巧克力蛋糕
+                        </p>
+                    </a>
+                </div>
+                <div class="list-head-1">¥ 88.00</div>
+                <div class="list-head-1">
+                    <span class="list-btn-count">
+                    <button type="" class="_addBtn">-</button>
+                    <input type="text" value="1">
+                    <button class="addBtn">+</button>
+                </span>
+                </div>
+                <div class="list-head-1">¥
+                    <span class="list-price">
+                    88.00
+                </span>
+                </div>
+                <div class="list-head-1">
+                    <a href="">
+                    删除
+                </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-cls">
+            <div class="shop-cls-btn-wrap">
+                <button>
+                    结算
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var _addBtn = document.getElementsByClassName("_addBtn")[0]
+        var addBtn = document.getElementsByClassName("addBtn")[0]
+        var priceNode = document.getElementsByClassName("list-price")[0]
+        var price = priceNode.firstChild.nodeValue.trim()
+        var input = document.getElementsByClassName("list-btn-count")[0].querySelector("input")
+        _addBtn.addEventListener('click', (e) => {
+            if (input.value <= 1) {
+                return false
+            }
+            input.value--
+                priceNode.firstChild.nodeValue = parseInt(price, 10) * parseInt(input.value)
+        })
+        addBtn.addEventListener('click', (e) => {
+            input.value++;
+            priceNode.firstChild.nodeValue = parseInt(price, 10) * parseInt(input.value)
+        })
+    </script>
+</body>
+
+</html>

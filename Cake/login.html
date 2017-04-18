@@ -5,11 +5,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>登陆</title>
+    <style>
+        .userlogin>ul{
+            width: 400px;
+            margin: 50px auto;
+            height: 300px;
+            border: 2px solid #dedede;
+            border-top: 2px solid #d65164;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+            padding-top: 65px;
+        }
+        .userlogin>ul>li>p{
+            margin-left: 65px;
+            padding:5px 0
+        }
+
+        .text1>input {
+            width: 220px;
+            height: 35px;
+            border-radius: 3px;
+            border: 1px solid #dedede;
+            margin-left: 3px;
+            padding-left: 5px;
+            outline: none;
+        }
+
+        .text2>input {
+            width: 220px;
+            height: 35px;
+            border-radius: 3px;
+            border: 1px solid #dedede;
+            margin-left: 3px;
+            padding-left: 5px;
+            outline: none;
+        }
+
+        .btnlogin>p>button {
+            width: 224px;
+            height: 40px;
+            border-radius: 3px;
+            border: none;
+            border: 1px solid #d65164;
+            margin-left: 3px;
+            line-height: 40px;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            display: block;
+            background-color: #d65164;
+            outline: none;
+            cursor: pointer;
+        }
+        .zhuce>a{
+            text-decoration: none;
+            font-size: 13.33px;
+            color: #222;
+        }
+        
+        header {
+            height: 80px;
+            width: 100%;
+            line-height: 100%;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo>a {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            margin-left: 100px;
+            outline: none;
+        }
+
+        .logo>a>img {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    LOGIN
+        <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="">
+            </a>
+        </div>
+    </header>
+    <div class="userlogin">
+        <ul>
+            <li>
+                <p class="text1">
+                 <input type="text" placeholder="用户名">   
+                </p>
+            </li>
+            <li>
+                <p class="text2">
+                 <input type="password" placeholder="密码">   
+                </p>
+            </li>
+            <li class="btnlogin">
+              <p> <button type="">登录</button> 
+              </p>
+            </li>
+            <li>
+                 <p class="zhuce"><a href="#">注册</a></p>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>

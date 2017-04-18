@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <style>
+        .regiter_warp {
+            margin: 20px auto;
+            width: 90%;
+            clear: both;
+            height: 500px;
+            width: 1100px;
+        }
+
+        .regiter_title {
+            font-size: 24px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-top: 0;
+            padding-left: 20px;
+        }
+
+        .submitform>ul {
+            list-style: none;
+            float: left;
+        }
+
+        label {
+            cursor: default;
+        }
+
+        .submitform>ul>li>p {
+            font-size: 15px;
+            text-align: right;
+            margin: 8px auto;
+            position: relative;
+        }
+
+        .submitform>ul>li>p>span>input {
+            margin-left: 8px;
+        }
+
+        input[type=text] {
+            width: 220px;
+            height: 35px;
+            border: 1px solid #dddddd;
+            border-radius: 3px;
+        }
+
+        input {
+            padding-left: 3px;
+            outline: none;
+        }
+
+        input[type=password] {
+            width: 220px;
+            height: 35px;
+            border: 1px solid #dddddd;
+            border-radius: 3px;
+        }
+
+        input {
+            padding-left: 3px;
+            outline: none;
+        }
+
+        #btn_reg {
+            width: 228px;
+            line-height: 28px;
+            height: 32px;
+            text-decoration: none;
+            width: 100px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 5px;
+            border: none;
+            border: 1px solid #d65164;
+            color: #fff;
+            background-color: #d65164;
+        }
+        .subBtn>p{
+            text-align: right;
+        }
+        
+        header {
+            height: 80px;
+            width: 100%;
+            line-height: 100%;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo>a {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            margin-left: 100px;
+            outline: none;
+        }
+
+        .logo>a>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+       <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="">
+            </a>
+        </div>
+    </header>
+    <div class="regiter_warp">
+        <p class="regiter_title">欢迎注册</p>
+        <div class="submitform">
+            <ul>
+                <li>
+                    <p>
+                        <label>用户名</label>
+                        <span>
+                                    <input name="tbx_user" type="text" id="tbx_user"></span><br>
+                        <label>
+                                    <span id="RegularExpressionValidator2" style="visibility:hidden;">用户名格式不正确</span><span id="RequiredFieldValidator1" style="visibility:hidden;">请输入用户名</span>
+                                </label>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <label>密码</label>
+                        <span>
+                <input name="tbx_psw" type="password" id="tbx_psw"></span><br>
+                        <label>
+                                    <span id="RegularExpressionValidator4" style="visibility:hidden;">密码格式不正确</span><span id="RequiredFieldValidator2" style="visibility:hidden;">请输入密码</span>
+                                </label>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <label>重复密码</label>
+                        <span>
+                                    <input name="tbx_psw_confirm" type="password" id="tbx_psw_confirm"></span><br>
+                        <label>
+                                    <span id="CompareValidator1" style="visibility:hidden;">两次密码不一致</span>
+                                </label>
+                    </p>
+                </li>
+
+                <li>
+                    <p>
+                        <label>名字</label>
+                        <span>
+                                    <input name="tbx_nickname" type="text" id="tbx_nickname"></span><br>
+                        <label>
+                                    <span id="RequiredFieldValidator3" style="visibility:hidden;">第一印象很重要，起个响亮的名号吧</span>
+                                </label>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <label>邮箱</label>
+                        <span>
+                                    <input name="tbx_email" type="text" id="tbx_email"></span>
+                        <br>
+                        <label>
+                                    <span id="RegularExpressionValidator1" style="visibility:hidden;">请输入正确的邮箱</span>
+                                </label>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <label>手机号码</label>
+                        <span>
+                                    <input name="tbx_phone" type="text" id="tbx_phone"></span><br>
+                        <span id="RegularExpressionValidator3" style="visibility:hidden;">请输入正确的手机号</span>
+                        <label>
+                                </label>
+                    </p>
+                </li>
+                <li>
+                    <span class="subBtn">
+                                <p>
+                                    <a id="btn_reg" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("btn_reg", "", true, "", "", false, true))'>注册</a>
+                                </p>
+                            </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

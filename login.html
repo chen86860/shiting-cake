@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+    登录
+  </title>
+  <style type="text/css">
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Microsoft YaHei', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    header {
+      width: 100%;
+      height: 100px;
+      padding-bottom: 11px;
+    }
+
+    .headerTopArea {
+      z-index: 99;
+      padding: 0 60px;
+      height: 20px;
+      line-height: 20px;
+      margin: 0 auto;
+      position: relative;
+      height: 20;
+      background-color: #eee;
+      border-bottom: 1px solid #CAC2C2;
+    }
+
+    .headerTopLeft {
+      color: #999;
+      font-size: 12px;
+    }
+
+    .headerTopRight {
+      position: relative;
+      top: -38px;
+      float: right;
+      right: 80px;
+      display: inline-block;
+      text-align: right;
+    }
+
+    .headerTopRight>ul {
+      list-style: none;
+      height: 20px;
+    }
+
+    .headerTopRight>ul>li {
+      margin: 0 8px 0;
+      float: left;
+    }
+
+    .headerTopRight>ul>li>a {
+      text-decoration: none;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .headerTopRight>ul>li>a:hover {
+      color: #f10582;
+    }
+
+    .logoArea {
+      width: 91%;
+      margin: 0 auto;
+      height: 80px;
+    }
+
+    .miaLogo {
+      width: 80px;
+      height: 70px;
+      padding-top: 0px;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    .miaLogo>a>img {
+      width: 100%;
+      margin-top: -15px;
+    }
+
+
+    .miaFootercon {
+      width: 1100px;
+      /* width: 100%; */
+      margin: 0 auto 20px;
+      height: 120px;
+      min-width: 1100px;
+      /* background-color: #ddd; */
+      display: block;
+    }
+
+    .miaFootercon>ul {
+      display: block;
+      list-style: none;
+      float: left;
+      margin: 0 40px;
+    }
+
+    .links {
+      font-weight: 600;
+    }
+
+    .miaFootercon>ul>a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .miaFootercon>ul>li>a:visited {
+      color: #000;
+    }
+
+    .miaFootercon>ul>li>a:hover {
+      color: #E91E63;
+    }
+
+    .miaFootercon>ul>li {
+      font-size: 14px;
+    }
+
+    .miaFooter_center,
+    .footer_copyright {
+      text-align: center;
+    }
+
+    footer {
+      clear: both;
+      width: 1100px;
+      width: 100%;
+      height: 120px;
+      font-size: 14px;
+      color: #6c6c6c;
+      /*background-color: #1D1D1D;*/
+      border-top: 1px solid #ddd;
+      bottom: 0;
+      font-size: 12px;
+      margin-top: 90px;
+      top: 80px;
+    }
+
+    .footer_con>a {
+      color: #6c6c6c;
+      font-size: 12px;
+    }
+
+    .footer_copy_con {
+      font-size: 12px;
+    }
+
+    .footer_copy_con>a {
+      color: #6c6c6c;
+      font-size: 12px;
+    }
+
+    .all_goods {
+      padding: 16px 174px 14px;
+      font-size: 12px;
+    }
+
+    #userInput {
+      width: 400px;
+      margin: 50px auto;
+      height: 300px;
+      border: 2px solid #dedede;
+      border-top: 2px solid #E91E63;
+    }
+
+    input {
+      font-family: 'Microsoft YaHei', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #userInput ul {
+      list-style: none;
+      margin-top: 60px;
+    }
+
+    #userInput ul li input[type="text"] {
+      width: 220px;
+      height: 35px;
+      border-radius: 3px;
+      border: none;
+      border: 1px solid #dedede;
+      margin-left: 3px;
+      padding-left: 5px;
+    }
+
+    #userInput ul li input[type="password"] {
+      width: 220px;
+      height: 35px;
+      border-radius: 3px;
+      border: none;
+      border: 1px solid #dedede;
+      margin-left: 3px;
+      padding-left: 5px;
+    }
+
+    #userInput>ul>li>p {
+      margin-left: 43px;
+    }
+
+    #userInput>ul>li>span>input {
+      border: none;
+      border-radius: 3px;
+      height: 40px;
+    }
+
+    #userInput>ul>li>span>input[type="submit"] {
+      background-color: #607D8B;
+      width: 224px;
+      height: 40px;
+      border: none;
+      color: #fff;
+    }
+
+    #back {
+      width: 100%;
+      height: 440px;
+      /*background-color:#ff4200;*/
+      clear: both;
+      width: 100%;
+      height: 440px;
+      /* background-color: #ff4200; */
+      clear: both;
+    }
+
+    #btn_login {
+      width: 224px;
+      height: 40px;
+      border-radius: 3px;
+      border: none;
+      border: 1px solid #E91E63;
+      margin-left: 3px;
+      /* padding-left: 3px; */
+      line-height: 40px;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      display: block;
+      background-color: #E91E63;
+    }
+
+    input {
+      outline: none;
+    }
+
+    #lbl_msg {
+      font-size: 14px;
+      color: #607D8B;
+    }
+
+    #rfv_user,
+    #rfv_pwd {
+      margin-left: 50px;
+      color: #607D8B;
+      font-size: 14px;
+    }
+
+    .regiter {
+      text-align: left;
+      font-size: 14px;
+      margin-top: 20px;
+      color: #333;
+      display: block;
+      margin-top: 20px;
+      position: relative;
+      top: 15px;
+    }
+
+    .regiter>span>a,
+    .regiter>a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .regiter>span {
+      text-align: right;
+      display: block;
+    }
+
+    .regiter>span>a:hover,
+    .regiter>a:hover {
+      color: #E91E63;
+    }
+
+    .forgotpsw {
+      text-align: right;
+      position: relative;
+      top: -4px;
+      right: 86px;
+      z-index: -10;
+    }
+
+    .login_title {
+      position: relative;
+      top: -20px;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" action="./login.aspx" id="form1">
+    <header>
+      <div class="logoArea">
+        <div class="miaLogo">
+          <a href="index.html" id="logo" title="返回首页">
+            <img src="./img/logo.png" alt="返回首页" /></a>
+        </div>
+      </div>
+    </header>
+
+    <div id="back">
+      <div id="userInput">
+        <ul>
+
+          <li>
+            <p>
+              <span>
+                                <input name="tbx_user" type="text" id="tbx_user" />
+                            </span>
+            </p>
+          </li>
+          <li>
+            <p>
+
+              <span>
+                                <input name="tbx_psw" type="password" id="tbx_psw" />
+                            </span>
+            </p>
+          </li>
+
+
+          <li>
+            <p>
+              <span>
+                                <a id="btn_login" href="javascript:__doPostBack(&#39;btn_login&#39;,&#39;&#39;)">登录</a></span>
+            </p>
+          </li>
+          <li>
+            <p class="regiter">
+              <a href="reg.html">注册</a>
+            </p>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <div class="miaFooter_center">
+        <div class="footer_con" id="footer_link" style="padding-top: 15px;">
+          <a href="#">关于M&S网上商城</a>
+          <a href="#">INVESTOR RELATIONS</a>
+          <a href="#">商家入驻</a>
+          <a href="#">获取更新</a>
+          <a href="#">加入M&S</a>
+          <a href="#">品牌合作专区</a>
+          <a href="#">网站联盟</a>
+          <a href="#">媒体报道</a>
+          <a href="#">商务合作</a>
+        </div>
+      </div>
+      <div id="footer_copyright" class="footer_copyright">
+        <div class="footer_con">
+          <p class="footer_copy_con">
+            COPYRIGHT &copy; 2015 五邑大学学生宿舍XX栋XX室 YILIN.COM 保留一切权利。 客服热线：400-0000-8888
+            <br /> 京公网安备 11010102001226 | <a href="#">京ICP证12345678号</a> | <a href="#">营业执照</a>
+          </p>
+
+        </div>
+      </div>
+    </footer>
+
+    <div class="aspNetHidden">
+
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2EE9ABB" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAARisgnV0mn63yNI8eoMm3oGBvjFXTwRWYNMYPVmMYi1QiQj1AMc0L7fd9ItCpYQsJV0OWarNtHZvueomBCnXS0aNLpJ961KANBz23ioNtZhsuRSi3/isv2Cu5yWc5PfVpE="
+      />
+    </div>
+  </form>
+  <script type="text/javascript">
+    window.onload = function () {
+
+      document.getElementById("tbx_user").setAttribute("placeholder", "用户名");
+      document.getElementById("tbx_psw").setAttribute("placeholder", "密码");
+      document.getElementById("tbx_user").focus();
+
+    }
+  </script>
+</body>
+
+</html>
