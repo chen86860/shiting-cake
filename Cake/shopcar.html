@@ -8,8 +8,124 @@
     <title>购物车</title>
     <style>
         body {
-            /*margin: 0;*/
             font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .info-important {
+            font-size: 20px;
+            color: #d65164;
+            font-weight: 700;
+        }
+
+        nav {
+            width: 1230px;
+            height: 78px;
+            margin: 0 auto;
+            z-index: 2;
+            overflow: hidden;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav>ul {
+            list-style: none;
+            margin: 0;
+            height: inherit;
+        }
+
+        nav>ul>li {
+            float: left;
+            display: flex;
+            align-items: center;
+            height: inherit;
+            justify-content: center;
+            align-content: center;
+            margin: 0 10px 0;
+        }
+
+        nav>ul>li>span {
+            height: 50px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center
+        }
+
+        nav>ul>li:first-child {
+            position: absolute;
+            left: 10px;
+        }
+
+        .logo {
+            line-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #d65164;
+            /* line-height: 41px; */
+            padding: 10px;
+            font-size: 24px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo>a>img {
+            width: 60px;
+            height: 45px;
+        }
+
+        .searchbtn>input {
+            width: 222px;
+            height: 29px;
+            border-radius: 3px;
+            background-color: #ffffff;
+            border: solid 1px #d65164;
+            outline: none;
+            padding: 0 8px 0;
+        }
+
+        .searchbtn>button {
+            cursor: pointer;
+            outline: none;
+            width: 40.7px;
+            height: 31px;
+            background-color: #d65164;
+            border: none;
+            left: -10px;
+            position: relative;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background-image: url("img/search.png");
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: 50%;
+        }
+
+        .reg>a,
+        .cart>a {
+            font-family: MicrosoftYaHei;
+            color: #d65164;
+            line-height: 100%;
+            padding: 0 10px;
+        }
+
+        .reg>a:first-child {
+            border-right: 1px solid #d65164;
         }
 
         input[type="checkbox"] {
@@ -17,24 +133,30 @@
         }
 
         .shop-car-wrap {
-            width: 1000px;
-            margin: 50px auto;
+            width: 1230px;
+            margin: 40px auto;
         }
 
         .list-head {
             display: flex;
             width: 100%;
-            height: 40px;
+            height: 60px;
+            border: 1px solid #ddd;
             background: #f3f3f3;
         }
 
+        .list-head .list-head-2 {
+            margin-left: 76px;
+        }
 
         .list-good-wrap {
             display: flex;
             width: 100%;
-            background: #f3f3f3;
-            border-top: 1px solid #ccc;
+            background: #ffffff;
+            border-bottom: 1px solid #ccc;
             padding: 15px 0 15px;
+            margin: 6px 0 0;
+            border: 1px solid #eee;
         }
 
         .list-head-1 {
@@ -46,20 +168,41 @@
         }
 
         .list-head-2 {
+            flex: 1;
             width: 50%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
         }
 
+        .list-head-checkbox {
+            width: 56px;
+            text-align: center;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .list-head .list-head-checkbox {
+            align-items: center;
+            justify-content: flex-end;
+            margin-left: 14px;
+            margin-right: 10px;
+        }
+
+        .list-head .list-head-checkbox input {
+            margin-right: 10px;
+        }
+
         .list-good a {
             text-decoration: none;
             color: #444;
             align-self: flex-start;
+            transition: background-color 300ms;
         }
 
         .list-good a:hover {
-            color: #dd00dd;
+            color: #d65164;
         }
 
         .list-good p {
@@ -102,57 +245,77 @@
         .shop-cls {
             width: 100%;
             text-align: right;
+            width: 100%;
+            text-align: right;
+            height: 50px;
+            border: 1px solid #eee;
+            margin: 20px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .shop-cls-btn-wrap>button {
+        .shop-cls-check {
+            height: 100%;
+            display: flex;
+        }
+
+        .shop-cls-checkbox input {
+            margin-left: 16px;
+            margin-right: 10px;
+        }
+
+        .shop-cls-check p {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .shop-cls-check>button {
             background-color: #d65164;
             border: 0;
-            width: 10%;
+            width: 130px;
             color: #fff;
-            padding: 10px 0 10px;
+            /* padding: 14px 0 10px; */
             font-size: 16px;
             text-align: center;
             align-items: center;
             cursor: pointer;
             outline: none;
-        }
-
-        header {
-            height: 80px;
-            width: 100%;
-            line-height: 100%;
-        }
-
-        .logo {
-            width: 100%;
             height: 100%;
-        }
-
-        .logo>a {
-            display: flex;
-            width: 100px;
-            height: 68px;
-            margin-left: 100px;
-            outline: none;
-        }
-
-        .logo>a>img {
-            width: 100%;
+            display: inline-block;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
+    <nav>
+        <span class="logo">
             <a href="index.html">
                 <img src="img/logo.png" alt="">
-            </a>
-        </div>
-    </header>
+                <span>购物车</span>
+        </a>
+        </span>
+        <ul>
+            <li>
+            </li>
+            <li><span class="searchbtn">
+                    <input type="text" name="" value="">
+                    <button type="search">
+                    
+                    </button>
+                    </span>
+            </li>
+            <li><span class="reg">
+                    <a href="login.html">登录</a>
+                    <a href="register.html">注册</a>
+                    </span>
+            </li>
+        </ul>
+    </nav>
     <div class="shop-car-wrap">
         <div class="list-head">
-            <div class="list-head-1"><input type="checkbox" name="" value="">全选</div>
+            <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value="">全选</div>
             <div class="list-head-2">商品</div>
             <div class="list-head-1">单价</div>
             <div class="list-head-1">数量</div>
@@ -161,7 +324,7 @@
         </div>
         <div class="list-body">
             <div class="list-good-wrap">
-                <div class="list-head-1"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value=""></div>
                 <div class="list-head-2 list-good">
                     <a href="" class="list-good-img">
                         <img src="img/goods/1.png" alt="">
@@ -192,7 +355,7 @@
                 </div>
             </div>
             <div class="list-good-wrap">
-                <div class="list-head-1"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value=""></div>
                 <div class="list-head-2 list-good">
                     <a href="" class="list-good-img">
                         <img src="img/goods/1.png" alt="">
@@ -223,7 +386,7 @@
                 </div>
             </div>
             <div class="list-good-wrap">
-                <div class="list-head-1"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value=""></div>
                 <div class="list-head-2 list-good">
                     <a href="" class="list-good-img">
                         <img src="img/goods/1.png" alt="">
@@ -256,7 +419,19 @@
         </div>
 
         <div class="shop-cls">
-            <div class="shop-cls-btn-wrap">
+            <div class="shop-cls-checkbox">
+                <input type="checkbox" name="" value="">全选
+            </div>
+            <div class="shop-cls-check">
+                <p>
+                    已选商品
+                    <span class="info-important">
+                    1
+                    </span> 件合计（不含运费）： ￥
+                    <span class="info-important">
+                    2149.00
+                    </span>
+                </p>
                 <button>
                     结算
                 </button>

@@ -6,337 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>L&T CAKE</title>
-    <style>
-        html,
-        body {
-            width: 100%;
-            min-width: 1000px;
-            padding: 0;
-            margin: 0;
-            background-color: #e9bfb1;
-        }
-
-        .logo {
-            position: absolute;
-            left: 100px;
-            top: 15px;
-        }
-
-        .logo>a>img {
-            width: 60px;
-            height: 45px;
-        }
-
-        .searchbtn>input {
-            width: 222px;
-            height: 29px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            border: solid 1px #d65164;
-            outline: none;
-            padding: 0 8px 0;
-        }
-
-        .searchbtn>button {
-            cursor: pointer;
-            outline: none;
-            width: 40.7px;
-            height: 31px;
-            background-color: #d65164;
-            border: none;
-            left: -10px;
-            position: relative;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            background-image: url("img/search.png");
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 50%;
-        }
-
-        nav {
-            width: 100%;
-            height: 78px;
-            margin: 0;
-            padding: 0;
-            min-width: 1000px;
-            position: absolute;
-            z-index: 2
-        }
-
-        nav>ul {
-            list-style: none;
-            position: absolute;
-            right: 10px;
-            margin: 0;
-            height: inherit;
-        }
-
-        nav>ul>li {
-            float: left;
-            display: flex;
-            align-items: center;
-            height: inherit;
-            justify-content: center;
-            align-content: center;
-            margin: 0 10px 0;
-        }
-
-        nav>ul>li>span {
-            height: 50px;
-            display: flex;
-            align-content: center;
-            align-items: center;
-            justify-content: center
-        }
-
-        nav>ul>li:first-child {
-            position: absolute;
-            left: 10px;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .zhuceyudenglu>a,
-        .gouwuche>a {
-            font-family: MicrosoftYaHei;
-            color: #d65164;
-            line-height: 100%;
-            padding: 0 10px;
-        }
-
-        .zhuceyudenglu>a:first-child {
-            border-right: 2px solid #d65164;
-        }
-
-
-        .banner {
-            position: relative;
-            z-index: 1;
-            min-width: 1000px;
-        }
-
-        .banner>img:first-child {
-            width: 100%;
-            /*height: 727px;*/
-            margin: 0;
-            padding: 0;
-        }
-
-        .banner>img:last-child {
-            width: 400px;
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translate(-50%, -50%);
-        }
-
-        .menu>ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-            margin: 28px 0;
-        }
-
-        .menu>ul>li>a>img {
-            width: 120px;
-            margin: 0 63px;
-        }
-
-        .slogon1>p:first-child {
-            font-family: STXingkai;
-            font-size: 44px;
-            color: #2d2d2d;
-        }
-
-        .slogon1>p {
-            text-align: center;
-            margin: 52px 0 0;
-        }
-
-        .slogon1>p:last-child {
-            font-family: STXingkai;
-            font-size: 36px;
-            color: #2d2d2d;
-            margin: 0;
-        }
-
-        .promotion1 {
-            display: flex;
-            width: 100%;
-            align-items: center
-        }
-
-        .promotion1>div {
-            width: 50%;
-        }
-
-        .promotion1>div:first-child {
-            padding-right: 20px;
-        }
-
-        .promotion1>div:last-child>a>img {
-            width: 400px;
-            padding-left: 40px;
-        }
-
-        .promotion1>div:first-child>ul {
-            list-style: none;
-            text-align: right;
-        }
-
-        .promotion1-head1 {
-            font-family: STXingkai;
-            font-size: 38px;
-            color: #2d2d2d;
-            margin: 0;
-        }
-
-        .promotion1-head2 {
-            font-family: MicrosoftYaHei;
-            font-size: 22px;
-            line-height: 1.09;
-            letter-spacing: 1.3px;
-            color: #2d2d2d;
-        }
-
-        .promotion1-head3 {
-            font-family: MicrosoftYaHei;
-            font-size: 22px;
-            line-height: 1.09;
-            letter-spacing: 1.3px;
-            color: #2d2d2d;
-        }
-
-        .promotion1-head4 {
-            font-family: MicrosoftYaHei;
-            font-size: 60.5px;
-            line-height: 0.57;
-            letter-spacing: 3.6px;
-            color: #2d2d2d;
-        }
-
-        .promotion2 ul {
-            list-style: none
-        }
-
-        .promotion2>div:first-child {
-            text-align: right
-        }
-
-        .goods {
-            width: 100%;
-            text-align: center;
-        }
-
-        .goods-warp {
-            width: 895px;
-            margin: 10px auto 10px;
-            display: flex;
-        }
-
-        .goods-warp>div {
-            width: 25%;
-        }
-
-        .goods-warp>div>a {
-            width: 100%;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .goods-warp>div>a>img {
-            max-width: 55%;
-            max-height: 70%;
-        }
-
-        .goods-warp div p {
-            color: #fff;
-            text-align: center;
-            margin: 0;
-        }
-
-        .goods-warp>div>p:last-child {
-            margin: 10px 0 0;
-        }
-
-        .goods-warp>div>p:last-child>a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #d65164;
-            border-radius: 5px;
-            width: 50%;
-            margin: 15px 4px 0;
-            padding: 4px;
-            overflow: hidden;
-        }
-
-        footer {
-            padding: 20px 0 20px;
-            background-image: url('img/footer.png');
-            background-repeat: no-repeat;
-            margin: 0;
-            margin-top: 100px;
-            padding-top: 17px;
-        }
-
-        .footer-warp {
-            width: 100%;
-            background-color: #fff;
-            position: relative;
-            top: 108px;
-        }
-
-        .footer-warp-container {
-            width: 900px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px auto 0;
-            padding-bottom: 20px;
-        }
-
-        .footer-warp-container>div {
-            width: 33%;
-            text-align: center
-        }
-
-        .footer-chat {
-            text-align: center
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
 <body>
     <nav>
         <span class="logo">
-                <a href="#">
-                    <img src="img/logo.png" alt="">
-                </a>
-                </span>
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="">
+                    </a>
+                    </span>
         <ul>
             <li>
             </li>
             <li><span class="searchbtn">
-                <input type="text" name="" value="">
-                <button type="search">
-                 
-                </button>
-                </span>
+                    <input type="text" name="" value="">
+                    <button type="search">
+                    
+                    </button>
+                    </span>
             </li>
-            <li><span class="zhuceyudenglu">
-                <a href="login.html">登录</a>
-                <a href="register.html">注册</a>
-                </span>
+            <li><span class="reg">
+                    <a href="login.html">登录</a>
+                    <a href="register.html">注册</a>
+                    </span>
             </li>
-            <li><span class="gouwuche">
-                <img src="img/gouwuche.png" alt="">
-                <a href="shopcar.html">我的购物车</a>
-                </span>
+            <li><span class="cart">
+                    <img src="img/cart-color.svg" alt="">
+                    <a href="shopcar.html">我的购物车</a>
+                    </span>
             </li>
         </ul>
     </nav>
@@ -344,7 +42,7 @@
         <img src="img/banner.png" alt="">
         <img src="img/bannerwords.png" alt="">
     </div>
-    <div class="menu">
+    <!--<div class="menu">
         <ul>
             <li>
                 <a href="#"><img src="img/menu1.png" alt=""></a>
@@ -359,203 +57,357 @@
                 <a href="#"><img src="img/menu4.png" alt=""></a>
             </li>
         </ul>
+    </div>-->
+    <div class="slogon1">
+        <fieldset>
+            <legend>
+                <p>当季推选</p>
+                <p>Season Selection</p>
+            </legend>
+        </fieldset>
+    </div>
+    <div class="promotion">
+        <div class="promotion-container">
+            <div class="promotion-container-lf">
+                <ul>
+                    <li>
+                        <a href="detail.html">
+                            <p class="promotion-head1">芭比·草莓巧克力蛋糕</p>
+                        </a>
+                    </li>
+                    <li>
+                        <p class="promotion-head2">Strawberry Chocolate Cake -- 寻找记忆里的味觉初体现</p>
+                    </li>
+                    <li>
+                        <p class="promotion-price">¥ 16.00</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="detail.html"><img src="img/promote1.png" alt=""></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="promotion">
+        <div class="promotion-container">
+            <div>
+                <a href="detail.html"><img src="img/promote2.png" alt=""></a>
+            </div>
+            <div class="promotion-container-lf">
+                <ul>
+                    <li>
+                        <a href="detail.html">
+                            <p class="promotion-head1">草莓白色奶油蛋糕水果蛋糕</p>
+                        </a>
+                    </li>
+                    <li>
+                        <p class="promotion-head2">Strawberry cream cake -- 荷尔蒙精心的午夜巴黎之旅</p>
+                    </li>
+                    <li>
+                        <p class="promotion-price">¥ 88.00</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="slogon1">
-        <p>当季推选</p>
-        <p>Season Selection</p>
-    </div>
-    <div class="promotion1">
-        <div>
-            <ul>
-                <li>
-                    <p class="promotion1-head1">芭比·草莓巧克力蛋糕</p>
-                </li>
-                <li>
-                    <p class="promotion1-head2">Strawberry Chocolate Cake</p>
-                </li>
-                <li>
-                    <p class="promotion1-head3">寻找记忆里的味觉初体现</p>
-                </li>
-                <li>
-                    <p class="promotion1-head4">¥ 16.00</p>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <a href="detail.html"><img src="img/promote1.png" alt=""></a>
-        </div>
-    </div>
-    <div class="promotion1 promotion2">
-        <div>
-            <a href="#"><img src="img/promote2.png" alt=""></a>
-        </div>
-        <div>
-            <ul>
-                <li>
-                    <p class="promotion1-head1">草莓白色奶油蛋糕水果蛋糕</p>
-                </li>
-                <li>
-                    <p class="promotion1-head2">Strawberry cream cake</p>
-                </li>
-                <li>
-                    <p class="promotion1-head3">荷尔蒙 精心的午夜巴黎之旅</p>
-                </li>
-                <li>
-                    <p class="promotion1-head4">¥ 88.00</p>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="slogon1">
-        <p>热销单品</p>
-        <p>Selling product</p>
+        <fieldset>
+            <legend>
+                <p>热销单品</p>
+                <p>Selling product</p>
+            </legend>
+        </fieldset>
+
     </div>
     <div class="goods">
         <div class="goods-warp">
-            <div>
-                <a href="#">
-                    <img src="img/goods/1.png" alt="">
-                </a>
-                <p>特浓巧克力蛋糕</p>
-                <p>¥ 88.00</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 88.00</span>
+                        <img src="img/goods/1.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">特浓巧克力蛋糕</p>
+                    <p class="good-subtitle">巧克力</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/2.png" alt="">
-                </a>
-                <p>芒果千层蛋糕</p>
-                <p>¥ 108.00</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 108.00</span>
+                        <img src="img/goods/2.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">芒果千层蛋糕</p>
+                    <p class="good-subtitle">巧克力</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/3.png" alt="">
-                </a>
-                <p>百花翻糖蛋糕</p>
-                <p>¥ 78.00</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 78.00</span>
+                        <img src="img/goods/3.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">百花翻糖蛋糕</p>
+                    <p class="good-subtitle">蛋糕</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/4.png" alt="">
-                </a>
-                <p>抹茶冻芝士蛋糕</p>
-                <p>¥ 98.00</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 98.00</span>
+                        <img src="img/goods/4.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">抹茶冻芝士蛋糕</p>
+                    <p class="good-subtitle">蛋糕</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-
-        </div>
-    </div>
-    <div class="goods">
-        <div class="goods-warp">
-            <div>
-                <a href="#">
-                    <img src="img/goods/5.png" alt="">
-                </a>
-                <p>粉粉公主蛋糕杯</p>
-                <p>¥ 8.00/个</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
-            </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/6.png" alt="">
-                </a>
-                <p>巧克力泡芙</p>
-                <p>¥ 6.00/个 </p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
-            </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/7.png" alt="">
-                </a>
-                <p>原味甜甜圈</p>
-                <p>¥ 5.00/个</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
-            </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/8.png" alt="">
-                </a>
-                <p>马卡龙</p>
-                <p>¥ 38.00/盒</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
-            </div>
-
         </div>
     </div>
     <div class="goods">
         <div class="goods-warp">
-            <div>
-                <a href="#">
-                    <img src="img/goods/9.png" alt="">
-                </a>
-                <p>马卡龙泡芙塔</p>
-                <p>¥ 12.00/个</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 8.00</span>
+                        <img src="img/goods/5.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">粉粉公主蛋糕杯</p>
+                    <p class="good-subtitle">缤纷享受</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/10.png" alt="">
-                </a>
-                <p>特抹茶巧克力冰激凌</p>
-                <p>¥ 18.00/个</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 6.00</span>
+                        <img src="img/goods/6.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">巧克力泡芙</p>
+                    <p class="good-subtitle">喷香满园</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/11.png" alt="">
-                </a>
-                <p>芒果冰激凌鸡蛋仔</p>
-                <p>¥ 25.00/个</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 5.00</span>
+                        <img src="img/goods/7.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">原味甜甜圈</p>
+                    <p class="good-subtitle">原味甜甜圈</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <img src="img/goods/12.png" alt="">
-                </a>
-                <p>草莓蛋糕皇后</p>
-                <p>¥ 13.00/个</p>
-                <p>
-                    <a href="#">加入购物车</a>
-                    <a href="#">立即购买</a>
-                </p>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 38.00</span>
+                        <img src="img/goods/8.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">马卡龙</p>
+                    <p class="good-subtitle">原味甜甜圈</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
-
         </div>
+    </div>
+    <div class="goods">
+        <div class="goods-warp">
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 18.00</span>
+                        <img src="img/goods/9.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">马卡龙泡芙塔</p>
+                    <p class="good-subtitle">缤纷享受</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 25.00</span>
+                        <img src="img/goods/10.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">芒果冰激凌鸡蛋仔</p>
+                    <p class="good-subtitle">缤纷享受</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 10.00</span>
+                        <img src="img/goods/11.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">特抹茶巧克力冰激凌</p>
+                    <p class="good-subtitle">缤纷享受</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="good-card">
+                <div class="good-desc">
+                    <a href="detail.html">
+                        <span class="good-price">¥ 13.00</span>
+                        <img src="img/goods/12.png" alt="">
+                    </a>
+                </div>
+                <div class="good-action">
+                    <p class="good-title">草莓蛋糕皇后</p>
+                    <p class="good-subtitle">缤纷享受</p>
+                    <p class="good-btn-buy">
+                        <a href="detail.html">
+                            <span>
+                                <i class="iconf-buy">
+                                </i>
+                                <i>
+                                    BUY
+                                </i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <footer>
         <div class="footer-warp">
