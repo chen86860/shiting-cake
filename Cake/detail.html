@@ -12,6 +12,7 @@
       width: 100%;
       min-width: 1000px;
       padding: 0;
+      font-size: 14px;
       margin: 0;
     }
 
@@ -106,6 +107,10 @@
       padding: 0 10px;
     }
 
+    .cart img {
+      width: 18px;
+    }
+
     a {
       text-decoration: none;
     }
@@ -131,6 +136,8 @@
 
     .detail-wrap ul {
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .detail-wrap {
@@ -141,7 +148,15 @@
     }
 
     .detail-wrap>div:first-child {
-      width: 400px
+      width: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-wrap>div:first-child img {
+      width: 460px;
+      max-width: 80%;
     }
 
     .detail-wrap>div:last-child {
@@ -179,6 +194,12 @@
       color: #555
     }
 
+    .detail-wrap-dec2>p>span:first-child {
+      text-decoration: none !important;
+      color: #d65164 !important;
+      padding: 0 !important;
+    }
+
     .detail-wrap-btn a {
       width: 150px;
       background-color: #d65164;
@@ -205,9 +226,11 @@
       padding-right: 14px;
     }
 
-    .detail-wrap-body>p {
+    .detail-wrap-body p {
       text-align: center;
-      font-size: 28px;
+      font-weight: bold;
+      color: #d65164;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -235,7 +258,7 @@
                     </span>
       </li>
       <li><span class="cart">
-                    <img src="img/cart.png" alt="">
+                    <img src="img/cart-color.svg" alt="">
                     <a href="shopcar.html">我的购物车</a>
                     </span>
       </li>
@@ -253,7 +276,10 @@
           <p>寻找记忆里的味觉初体现</p>
         </li>
         <li class="detail-wrap-dec2">
-          <p>¥ 16.00 <span>¥ 25.00</span></p>
+          <p>
+            <span>
+              ¥
+            </span> 16.00 <span>¥ 25.00</span></p>
         </li>
         <li>
           <p>
@@ -277,7 +303,12 @@
     </div>
   </div>
   <div class="detail-wrap-body">
-    <p>——————商品详情——————</p>
+    <p>
+      <span>/
+        </span> 商品详情
+      <span>/
+        </span>
+    </p>
   </div>
 </body>
 
