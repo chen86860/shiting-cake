@@ -6,135 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
-        body {
-            font-size: 14px;
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .info-important {
-            font-size: 20px;
-            color: #d65164;
-            font-weight: 700;
-        }
-
-        nav {
-            width: 1230px;
-            height: 78px;
-            margin: 0 auto;
-            z-index: 2;
-            overflow: hidden;
-            top: 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        nav>ul {
-            list-style: none;
-            margin: 0;
-            height: inherit;
-        }
-
-        nav>ul>li {
-            float: left;
-            display: flex;
-            align-items: center;
-            height: inherit;
-            justify-content: center;
-            align-content: center;
-            margin: 0 10px 0;
-        }
-
-        nav>ul>li>span {
-            height: 50px;
-            display: flex;
-            align-content: center;
-            align-items: center;
-            justify-content: center
-        }
-
-        nav>ul>li:first-child {
-            position: absolute;
-            left: 10px;
-        }
-
-        .logo {
-            line-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo span {
-            color: #d65164;
-            /* line-height: 41px; */
-            padding: 10px;
-            font-size: 24px;
-        }
-
-        .logo a {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo>a>img {
-            width: 60px;
-            height: 45px;
-        }
-
-        .searchbtn>input {
-            width: 222px;
-            height: 29px;
-            border-radius: 3px;
-            background-color: #ffffff;
-            border: solid 1px #d65164;
-            outline: none;
-            padding: 0 8px 0;
-        }
-
-        .searchbtn>button {
-            cursor: pointer;
-            outline: none;
-            width: 40.7px;
-            height: 31px;
-            background-color: #d65164;
-            border: none;
-            left: -10px;
-            position: relative;
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
-            background-image: url("img/search.png");
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 50%;
-        }
-
-        .reg>a,
-        .cart>a {
-            font-family: MicrosoftYaHei;
-            color: #d65164;
-            line-height: 100%;
-            padding: 0 10px;
-        }
-
-        .reg>a:first-child {
-            border-right: 1px solid #d65164;
-        }
-
-        input[type="checkbox"] {
-            outline: none;
-        }
-
+        
         .shop-car-wrap {
-            width: 1230px;
-            margin: 40px auto;
+            width: 1200px;
+            margin: 40px auto 80px;
         }
 
         .list-head {
@@ -416,8 +293,38 @@
                 </a>
                 </div>
             </div>
+            <div class="list-good-wrap">
+                <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value=""></div>
+                <div class="list-head-2 list-good">
+                    <a href="" class="list-good-img">
+                        <img src="img/goods/1.png" alt="">
+                    </a>
+                    <a href="">
+                        <p>
+                            特浓巧克力蛋糕特浓巧克力蛋糕
+                        </p>
+                    </a>
+                </div>
+                <div class="list-head-1">¥ 88.00</div>
+                <div class="list-head-1">
+                    <span class="list-btn-count">
+                    <button type="" class="_addBtn">-</button>
+                    <input type="text" value="1">
+                    <button class="addBtn">+</button>
+                </span>
+                </div>
+                <div class="list-head-1">¥
+                    <span class="list-price">
+                    88.00
+                </span>
+                </div>
+                <div class="list-head-1">
+                    <a href="">
+                    删除
+                </a>
+                </div>
+            </div>
         </div>
-
         <div class="shop-cls">
             <div class="shop-cls-checkbox">
                 <input type="checkbox" name="" value="">全选
@@ -438,6 +345,35 @@
             </div>
         </div>
     </div>
+    <div class="fooer-helper"></div>
+    <footer>
+        <div class="footer-warp-container">
+            <div class="footer-comm">
+                <p>订购服务热线： 800-628-5656
+                </p>
+                <p>营业时间： 9:00~23:00
+                </p>
+            </div>
+            <div class="footer-chat">
+                <img src="img/qcode.png" alt="">
+                <p>扫二维码 关注本店最新动态</p>
+                <p>
+                    <img src="img/footer-chat-1.png" alt="">
+                    <img src="img/footer-chat-2.png" alt="">
+                    <img src="img/footer-chat-3.png" alt="">
+                    <img src="img/footer-chat-4.png" alt="">
+                </p>
+            </div>
+            <div>
+                <p>
+                    <a href="#">购物指南</a> | <a href="#">卡券使用</a> | <a href="">配送方式</a>
+                </p>
+                <p>
+                    <a href="#">服务条款</a> | <a href="#">品牌故事</a> | <a href="">网站地图</a>
+                </p>
+            </div>
+        </div>
+    </footer>
     <script>
         var _addBtn = document.getElementsByClassName("_addBtn")[0]
         var addBtn = document.getElementsByClassName("addBtn")[0]

@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
+        .userlogin {
+            min-width: 1200px;
         }
 
         .userlogin>ul {
             width: 400px;
             margin: 50px auto;
             height: 300px;
-            border: 2px solid #dedede;
+            border: 2px solid #efefef;
             border-top: 2px solid #d65164;
             list-style: none;
             justify-content: center;
             align-items: center;
+            border-radius: 3px;
             padding-top: 65px;
         }
 
@@ -77,68 +77,6 @@
             font-size: 13.33px;
             color: #222;
         }
-
-        a {
-            text-decoration: none;
-        }
-
-        nav {
-            width: 1230px;
-            height: 78px;
-            margin: 0 auto;
-            z-index: 2;
-            overflow: hidden;
-            top: 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .logo {
-            line-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo>a>img {
-            width: 60px;
-            height: 45px;
-        }
-
-        .searchbtn>input {
-            width: 222px;
-            height: 29px;
-            border-radius: 3px;
-            background-color: #ffffff;
-            border: solid 1px #d65164;
-            outline: none;
-            padding: 0 8px 0;
-        }
-
-        .searchbtn>button {
-            cursor: pointer;
-            outline: none;
-            width: 40.7px;
-            height: 31px;
-            background-color: #d65164;
-            border: none;
-            left: -10px;
-            position: relative;
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
-            background-image: url("img/search.png");
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 50%;
-        }
-
-        .reg>a,
-        .cart>a {
-            font-family: MicrosoftYaHei;
-            color: #d65164;
-            line-height: 100%;
-            padding: 0 10px;
-        }
     </style>
 </head>
 
@@ -171,6 +109,35 @@
             </li>
         </ul>
     </div>
+    <div class="fooer-helper"></div>
+    <footer>
+        <div class="footer-warp-container">
+            <div class="footer-comm">
+                <p>订购服务热线： 800-628-5656
+                </p>
+                <p>营业时间： 9:00~23:00
+                </p>
+            </div>
+            <div class="footer-chat">
+                <img src="img/qcode.png" alt="">
+                <p>扫二维码 关注本店最新动态</p>
+                <p>
+                    <img src="img/footer-chat-1.png" alt="">
+                    <img src="img/footer-chat-2.png" alt="">
+                    <img src="img/footer-chat-3.png" alt="">
+                    <img src="img/footer-chat-4.png" alt="">
+                </p>
+            </div>
+            <div>
+                <p>
+                    <a href="#">购物指南</a> | <a href="#">卡券使用</a> | <a href="">配送方式</a>
+                </p>
+                <p>
+                    <a href="#">服务条款</a> | <a href="#">品牌故事</a> | <a href="">网站地图</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

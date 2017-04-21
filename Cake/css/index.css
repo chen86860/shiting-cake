@@ -1,5 +1,6 @@
   html,
   body {
+    position: relative;
     width: 100%;
     min-width: 1200px;
     padding: 0;
@@ -10,7 +11,7 @@
 
   nav {
     font-size: 14px;
-    width: 1230px;
+    width: 1200px;
     height: 78px;
     margin: 0 auto;
     z-index: 2;
@@ -240,7 +241,7 @@
   }
 
   .goods {
-    width: 1230px;
+    width: 1200px;
     margin: 0 auto;
     text-align: center;
   }
@@ -259,6 +260,9 @@
     margin-top: 100px;
     padding-top: 17px;
     font-size: 14px;
+    color: #777777;
+    position: relative;
+    border: none;
   }
 
   .footer-warp {
@@ -269,12 +273,13 @@
   }
 
   .footer-warp-container {
-    width: 1230px;
+    width: 1200px;
     align-items: center;
     justify-content: center;
     margin: 10px auto 0;
     padding-bottom: 20px;
     display: flex;
+    border: none;
   }
 
   .footer-warp-container>div {
@@ -284,6 +289,26 @@
 
   .footer-chat {
     text-align: center
+  }
+
+  footer a {
+    color: inherit;
+  }
+
+  footer a:visited {
+    color: inherit;
+  }
+
+  footer a:hover {
+    color: #d65164;
+  }
+
+  .footer-chat>img:first-child {
+    width: 80px;
+  }
+
+  .footer-chat>p>img {
+    width: 28px;
   }
 
   .iconf-buy {
@@ -446,6 +471,8 @@
     color: #fff;
     background-color: #d65164;
   }
-  .banner-nav-wrap{
-    margin: 80px 0 ;
+
+  .banner-nav-wrap {
+    margin: 80px 0;
   }
+
