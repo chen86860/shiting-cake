@@ -476,7 +476,7 @@
             addEventListener('scroll', (e) => {
                 var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
                 btnTop.style.display = scrollTop >= 400 ? 'inline-block' : 'none'
-                // 判断是否抵达顶部，若否，停止计时器
+                    // 判断是否抵达顶部，若否，停止计时器
                 if (!isTop) {
                     clearInterval(timer);
                 }
@@ -488,9 +488,9 @@
                 timer = setInterval(() => {
                     // 到顶部距离
                     var toTop = document.documentElement.scrollTop || document.body.scrollTop
-                    // 速度，根据顶部距离判断得之
-                    var speed = Math.ceil(toTop / 6)
-                    // 顶部减去速度,得到位置
+                        // 速度，根据顶部距离判断得之
+                    var speed = Math.ceil(toTop / 4)
+                        // 顶部减去速度,得到位置
                     document.documentElement.scrollTop = document.body.scrollTop = toTop - speed
                     if (!toTop) {
                         clearInterval(timer)
