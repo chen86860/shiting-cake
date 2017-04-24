@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情页</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <style>
+        .cart img {
+            width: 18px;
+        }
+        
+        .reg>a:first-child {
+            border-right: 2px solid #d65164;
+        }
+        
+        .list-btn-count {
+            display: flex;
+        }
+        
+        .list-btn-count input {
+            width: 40px;
+            border: none;
+            border-bottom: 1px solid #cacaca;
+            border-top: 1px solid #cacaca;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        
+        .list-btn-count button {
+            border: 1px solid #cacaca;
+            background-color: #fff;
+            color: #cacaca;
+            outline: none
+        }
+        
+        .detail-wrap ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .detail-wrap {
+            display: flex;
+            width: 1200px;
+            margin: 100px auto 0;
+            border-bottom: 1px solid #efefef;
+        }
+        
+        .detail-wrap>div:first-child {
+            width: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .detail-wrap>div:first-child img {
+            width: 460px;
+            max-width: 80%;
+        }
+        
+        .detail-wrap>div:last-child {
+            flex: 1
+        }
+        
+        .detail-wrap-dec1>p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .detail-wrap-dec1>p:last-child {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .detail-wrap-dec2 {
+            background-color: rgba(230, 229, 229, 0.47);
+            height: 100px;
+            margin: 20px 0;
+        }
+        
+        .detail-wrap-dec2>p {
+            font-size: 33px;
+            color: #d65164;
+            margin: 0;
+            line-height: 100px;
+            padding-left: 20px;
+        }
+        
+        .detail-wrap-dec2 span {
+            font-size: 16px;
+            text-decoration: line-through;
+            color: #555
+        }
+        
+        .detail-wrap-dec2>p>span:first-child {
+            text-decoration: none !important;
+            color: #d65164 !important;
+            padding: 0 !important;
+        }
+        
+        .detail-wrap-btn {
+            margin: 29px 0;
+            overflow: hidden;
+        }
+        
+        .detail-wrap-btn a {
+            width: 134px;
+            background-color: #d65164;
+            border: none;
+            height: 42px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            line-height: 42px;
+            outline: none;
+            transition: background-color 200ms ease-out;
+            border-radius: 100px;
+        }
+        
+        .detail-wrap-btn a:hover {
+            background-color: #de6576;
+        }
+        
+        .detail-wrap-info>li>p>span:first-child {
+            color: #a9a9a9;
+            padding-right: 14px;
+        }
+        
+        .detail-wrap-body p {
+            text-align: center;
+            font-weight: bold;
+            color: #d65164;
+            font-size: 16px;
+        }
+        
+        .list-count>p {
+            display: flex
+        }
+        
+    
+    </style>
+</head>
+
+<body>
+    <nav>
+        <span class="logo">
+                    <a href="index.php">
+                        <img src="img/logo.png" alt="">
+                    </a>
+                    </span>
+        <ul>
+            <li>
+            </li>
+            <li><span class="searchbtn">
+                    <input type="text" name="" value="">
+                    <button type="search">
+                    
+                    </button>
+                    </span>
+            </li>
+            <li><span class="reg">
+                    <a href="login.php">登录</a>
+                    <a href="register.php">注册</a>
+                    </span>
+            </li>
+            <li><span class="cart">
+                    <img src="img/cart-color.svg" alt="">
+                    <a href="shopcar.php">我的购物车</a>
+                    </span>
+            </li>
+        </ul>
+    </nav>
+    <div class="detail-wrap">
+        <div>
+            <img src="img/promote1.png" alt="">
+
+        </div>
+        <div>
+            <ul class="detail-wrap-info">
+                <li class="detail-wrap-dec1">
+                    <p>芭比·草莓巧克力蛋糕 Strawberry Chocolate Cake</p>
+                    <p>寻找记忆里的味觉初体现</p>
+                </li>
+                <li class="detail-wrap-dec2">
+                    <p>
+                        <span>
+              ¥
+            </span> 16.00 <span>¥ 25.00</span></p>
+                </li>
+                <li>
+                    <p>
+                        <span>运费</span><span>¥ 8.00（订单满199免运费）</span>
+                    </p>
+                </li>
+                <li class="list-count">
+                    <p>
+                        <span>数量</span>
+                        <span class="list-btn-count">
+                    <button type="" class="_addBtn">-</button>
+                    <input type="text" value="1">
+                    <button class="addBtn">+</button>
+                </span>
+                    </p>
+                </li>
+                <li class="detail-wrap-btn">
+                    <p><a href="shopcar.php">加入购物车</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="detail-wrap-body">
+        <p>
+            <span>/
+        </span> 商品详情
+            <span>/
+        </span>
+        </p>
+    </div>
+    <!--<div class="fooer-helper"></div>
+  <footer>
+    <div class="footer-warp-container">
+      <div class="footer-comm">
+        <p>订购服务热线： 800-628-5656
+        </p>
+        <p>营业时间： 9:00~23:00
+        </p>
+      </div>
+      <div class="footer-chat">
+        <img src="img/qcode.png" alt="">
+        <p>扫二维码 关注本店最新动态</p>
+        <p>
+          <img src="img/footer-chat-1.png" alt="">
+          <img src="img/footer-chat-2.png" alt="">
+          <img src="img/footer-chat-3.png" alt="">
+          <img src="img/footer-chat-4.png" alt="">
+        </p>
+      </div>
+      <div>
+        <p>
+          <a href="#">购物指南</a> | <a href="#">卡券使用</a> | <a href="">配送方式</a>
+        </p>
+        <p>
+          <a href="#">服务条款</a> | <a href="#">品牌故事</a> | <a href="">网站地图</a>
+        </p>
+      </div>
+    </div>
+  </footer>-->
+</body>
+
+</html>
