@@ -166,8 +166,9 @@ cici;
         .list-count > p {
             display: flex
         }
-
-
+        .addBtn,.subBtn{
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -195,7 +196,7 @@ cici;
         </li>
         <li><span class="cart">
                     <img src="img/cart-color.svg" alt="">
-                    <a href="shopcar.php">我的购物车</a>
+                    <a href="shop-cart.php">我的购物车</a>
                     </span>
         </li>
     </ul>
@@ -229,8 +230,8 @@ cici;
                 <p>
                     <span>数量</span>
                     <span class="list-btn-count">
-                    <button type="" class="_addBtn">-</button>
-                    <input type="text" value="1" class="count">
+                    <button type="" class="subBtn">-</button>
+                    <input type="text" value="1" class="count" id="count">
                     <button class="addBtn">+</button>
                 </span>
                 </p>
@@ -285,11 +286,25 @@ cici;
 </div>
 </footer>-->
 <script>
+    var subBtn = document.getElementsByClassName("subBtn")[0]
+    var addBtn = document.getElementsByClassName("addBtn")[0]
+    var count = document.querySelector("#count")
+    subBtn.addEventListener('click', (e) => {
+        if (count.value <= 1) {
+            return false
+        }
+        count.value--
+    })
+    addBtn.addEventListener('click', (e) => {
+        count.value++;
+    })
     function addCart(id) {
         var data = "goodId=" + id + "&count=" + parseInt(document.querySelector(".count").value)
-        postData('./addCart.php', 'post', data, function (result) {
+        postData('./add-cart.php', 'post', data, function (result) {
             if (JSON.parse(result)['code'] == 0) {
                 location.href = "./add-cart-succeed.php"
+            } else if (JSON.parse(result)['code'] == -1) {
+                location.href = "./login.php"
             } else {
                 alert("e...网络错误，请重试")
             }

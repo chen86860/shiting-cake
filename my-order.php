@@ -7,7 +7,7 @@
  */
 session_start();
 if (!isset($_SESSION['id'])) {
-    header("location:./index.php");
+    header("location:./login.php");
     exit;
 }
 
@@ -16,19 +16,19 @@ if (!isset($_SESSION['id'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>cic</title>
+    <title>我的订单-- cic</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
-        .cart-succed {
+        .order-succed {
             text-align: center;
             margin: 300px auto;
         }
 
-        .cart a {
+        .order a {
             border: none !important;
         }
 
-        .cart-succed a {
+        .order-succed a {
             border: none !important;
             display: inline-block;
             width: 162px;
@@ -40,11 +40,11 @@ if (!isset($_SESSION['id'])) {
             border-radius: 4px;
         }
 
-        .cart-succed a:hover {
+        .order-succed a:hover {
             background-color: #d65164;
         }
 
-        h1 {
+        .order-succed h1 {
             color: #1d1d1d;
             font-weight: 300;
         }
@@ -60,19 +60,17 @@ if (!isset($_SESSION['id'])) {
     <ul>
         <li>
         </li>
-        <li><span class="cart">
-                    <?php
-                    if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
-                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
-                    }
-                    ?>
+        <li><span class="order">
+                    <a href="#">
+                        <?php echo $username ?>
+                    </a>
                     </span>
         </li>
     </ul>
 </nav>
-<div class="cart-succed">
-    <h1>商品已成功加入购物车！</h1>
-    <a href="shop-cart.php">去购物车结算</a></div>
+<div class="order-succed">
+    <h1>我的订单</h1>
+</div>
 <div class="fooer-helper"></div>
 <footer>
     <div class="footer-warp-container">

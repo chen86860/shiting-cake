@@ -14,7 +14,7 @@ if (isset($_POST['username']) && $_POST['username'] != "") {
 }
 if (isset($_POST['password']) && $_POST['password'] != "") {
     $random_str = "9-l,.gf043";
-    $password = md5($_POST['password'].$_POST['username'].$random_str);
+    $password = md5($_POST['password'] . $_POST['username'] . $random_str);
 }
 if (isset($_POST['nickname']) && $_POST['nickname'] != "") {
     $nickname = $_POST['nickname'];
@@ -39,7 +39,6 @@ cici;
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +46,7 @@ cici;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/common.css">
-    <title>注册</title>
+    <title>注册 - CiC Cake</title>
     <style>
         .regiter_warp {
             margin: 20px auto;
@@ -171,7 +170,7 @@ cici;
 </nav>
 <div class="regiter_warp">
     <p class="regiter_title">欢迎注册</p>
-    <form action="register.php" method="post" onkeydown="keydown()">
+    <form action="register.php" method="post">
         <div class="form-wrap">
             <div class="submitform">
                 <ul>
@@ -179,10 +178,10 @@ cici;
                         <p>
                             <label>用户名</label>
                             <span>
-    <input  type="text" id="tbx_user" name="username"></span><br>
+    <input type="text" id="tbx_user" name="username"></span><br>
                             <label>
                                 <span id="RegularExpressionValidator2" style="visibility:hidden;">用户名格式不正确</span><span
-                                    id="RequiredFieldValidator1" style="visibility:hidden;">请输入用户名</span>
+                                        id="RequiredFieldValidator1" style="visibility:hidden;">请输入用户名</span>
                             </label>
                         </p>
                     </li>
@@ -193,7 +192,7 @@ cici;
     <input name="password" type="password" id="tbx_psw"></span><br>
                             <label>
                                 <span id="RegularExpressionValidator4" style="visibility:hidden;">密码格式不正确</span><span
-                                    id="RequiredFieldValidator2" style="visibility:hidden;">请输入密码</span>
+                                        id="RequiredFieldValidator2" style="visibility:hidden;">请输入密码</span>
                             </label>
                         </p>
                     </li>
@@ -284,12 +283,88 @@ cici;
     </div>
 </footer>
 <script>
-    function keydown() {
-        if (event.keycode == 13) {
-            event.returnvalue = false;  //不刷新界面
-            form.btnok.click(); //表单提交
+    ((doc, win) => {
+        let username = doc.getElementsByName('username')[0],
+            password = doc.getElementsByName('password')[0],
+            password_confirm = doc.getElementsByName('password_confirm')[0],
+            nickname = doc.getElementsByName('nickname')[0],
+            email = doc.getElementsByName('email')[0],
+            form = doc.getElementsByTagName('form')[0]
+
+        let checkObject = () => {
+            return {
+                username: () => {
+                    return username.value.length > 3
+                },
+                password: () => {
+                    return password.value.length > 3
+                },
+                password_confirm: () => {
+                    return password_confirm.value === password.value
+                },
+                nickname: () => {
+                    return nickname.value.length > 3
+                },
+                email: () => {
+                    return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(email.value)
+                }
+            }
         }
-    }
+
+        let ajax = (url, method, parms, callback) => {
+            var request = new XMLHttpRequest()
+            if (request) {
+                request.open(method, url, true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.onreadystatechange = function () {
+                    if (request.readyState == 4 && request.status == 200) {
+                        callback(request.response)
+                    }
+                }
+                request.send(parms)
+                return true
+            } else {
+                alert('Sorry,your browser doesn\'t support XMLHttpRequeset');
+                return false
+            }
+        }
+        // 默认获得焦点
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            return
+        })
+        let inputing = false
+        let inputStr = ''
+        let timer = null
+        username.addEventListener('focus', (e) => {
+            inputing = true
+        })
+        username.addEventListener('blur', (e) => {
+            inputing = false
+        })
+        addEventListener('keyup', (e) => {
+            if (!inputing) return
+            inputStr += (e.key.toString())
+            clearTimeout(timer)
+            timer = setTimeout((inputStr) => {
+                let data = 'action=checkUser&username=' + inputStr
+                ajax('./common.php', 'post', data, (res) => {
+                    console.log(res)
+                    if ((JSON.parse(res))['code'] == 0) {
+                        console.log('OK')
+                    } else {
+                        console.log('已注册')
+                    }
+                })
+            }, 1000, inputStr)
+        })
+        addEventListener('keypress', (e) => {
+            if (e.keyCode === 13) {
+                form.submit();
+            }
+        })
+
+    })(document, window)
 </script>
 </body>
 

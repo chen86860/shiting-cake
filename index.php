@@ -1,23 +1,18 @@
 <?php
-header("Content-Type: text/html;charset=utf-8");
-
+session_start();
 include "conn.php";
 
 $sql_promotion = <<<cici
 select * from goods where hot = 1;
-
 cici;
 
 $sql_goods = <<<cici
 select * from goods where hot = 0;
-
 cici;
-
 // promotion
 mysqli_query($link, "set character set 'utf8'");
 //读库
 $res_promotion = mysqli_fetch_all(mysqli_query($link, $sql_promotion), MYSQL_ASSOC);
-
 
 // goods
 $res_goods = mysqli_fetch_all(mysqli_query($link, $sql_goods), MYSQL_ASSOC);
@@ -32,10 +27,9 @@ mysqli_close($link);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>L&T CAKE</title>
+    <title>CiC Cake</title>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
 </head>
-
 <body>
 <div class="logotop">
     <nav>
@@ -56,27 +50,20 @@ mysqli_close($link);
             </li>
             <li><span class="reg">
                     <?php
-if (isset($_COOKIE['username'])) {
-	
-	echo '<a href=./myorder.php>' . $_COOKIE['username'] . "</a>";
-	
-}
-else {
-	
-	echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
-	
-}
-
-?>
+                    if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
+                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                    } else {
+                        echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
+                    }
+                    ?>
                 </span>
             </li>
             <li><span class="cart">
                 <img src="img/gouwuche.png" alt="">
-                <a href="shopcar.php">我的购物车</a>
+                <a href="shop-cart.php">我的购物车</a>
                 </span>
             </li>
         </ul>
-
     </nav>
 </div>
 <div class="banner">
@@ -107,9 +94,7 @@ else {
         <ul>
             <li>
                 <p class="promotion-head1">
-                    <?php
-echo $res_promotion[0]['title']
-?>
+                    <?php echo $res_promotion[0]['title'] ?>
                 </p>
             </li>
             <li>
@@ -156,12 +141,12 @@ echo $res_promotion[0]['title']
 </div>
 <?php
 for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
-	
-	echo '<div class="goods"><div class="goods-warp">';
-	
-	for ($i = $j * 4; $i <= ($j + 1) * 4 - 1; $i++) {
-		
-		echo "<div>
+
+    echo '<div class="goods"><div class="goods-warp">';
+
+    for ($i = $j * 4; $i <= ($j + 1) * 4 - 1; $i++) {
+
+        echo "<div>
                     <a href=detail.php?id=" . $res_goods[$i]['id'] . "><img src='" . $res_goods[$i]['img'] . "' alt=''>
                     </a>
                     <p>" . $res_goods[$i]['title'] . "</p>
@@ -171,10 +156,9 @@ for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
                         <a href=detail.php?id=" . $res_goods[$i]['id'] . ">立即购买</a>
                     </p>
              </div>";
-	}
-	echo '</div></div>';
+    }
+    echo '</div></div>';
 }
-
 ?>
 <footer>
     <div class="footer-warp">
@@ -207,5 +191,35 @@ for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
         </div>
     </div>
 </footer>
+<script>
+    function signOut(username) {
+        var data = "action=signOut&username=" + username;
+        postData('./common.php', 'post', data, function (res) {
+            if (JSON.parse(res)['code'] == 0) {
+                location.href = "./index"
+            } else {
+                alert("e...网络故障")
+            }
+        })
+    }
+
+    function postData(url, method, parms, callback) {
+        var request = new XMLHttpRequest()
+        if (request) {
+            request.open(method, url, true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    callback(request.response)
+                }
+            }
+            request.send(parms)
+            return true
+        } else {
+            alert('Sorry,your browser doesn\'t support XMLHttpRequeset');
+            return false
+        }
+    }
+</script>
 </body>
 </html>

@@ -39,7 +39,7 @@ mysqli_close($link)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录</title>
+    <title>登录 - CiC Cake</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
         .userlogin {
@@ -102,7 +102,7 @@ mysqli_close($link)
             transition: background-color 400ms ease-out;
         }
 
-        .btnlogin > p > button:hover {
+        .btnlogin > p > input[type="submit"]:hover {
             background-color: #e46073;
         }
 
@@ -206,6 +206,56 @@ mysqli_close($link)
         </div>
     </div>
 </footer>
+<script>
+    ((doc, win) => {
+        let form = doc.getElementsByTagName('form')[0]
+        let username = doc.getElementsByName('username')[0]
+        let password = doc.getElementsByName('password')[0]
+        let check = {
+            username: () => {
+                return username.value.length > 3
+            },
+            password: () => {
+                return password.value.length > 3
+            }
+        }
+
+        if (username.value === '') {
+            username.focus()
+        } else {
+            password.focus()
+        }
+        form.addEventListener('submit', (e) => {
+            if (!check.username()) {
+                alert("用户名不对哇~~")
+                username.focus()
+                e.preventDefault()
+            }
+            if (!check.password()) {
+                alert("密码长度不对~~")
+                password.focus()
+                e.preventDefault()
+            }
+        })
+        addEventListener('keypress', (e) => {
+            if (e.keyCode === 13) {
+                if (!check.username()) {
+                    alert("用户名不对哇~~")
+                    username.focus()
+                    e.preventDefault()
+                    return
+                }
+                if (!check.password()) {
+                    alert("密码长度不对~~")
+                    password.focus()
+                    e.preventDefault()
+                    return
+                }
+                doc.forms[0].submit()
+            }
+        })
+    })(document, window);
+</script>
 </body>
 
 </html>
