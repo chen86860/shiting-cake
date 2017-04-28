@@ -125,7 +125,7 @@ nav>ul>li:first-child {
   padding: 0 10px;
 }
 
-.reg>a:first-child {
+.border-l {
   border-right: 1px solid #d65164;
 }
 

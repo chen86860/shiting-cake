@@ -98,10 +98,6 @@
         padding: 0 10px;
     }
 
-    .reg>a:first-child {
-        border-right: 2px solid #d65164;
-    }
-
     .banner {
         position: relative;
         z-index: 1;
@@ -125,6 +121,9 @@
         /*height: 727px;*/
         margin: 0;
         padding: 0;
+    }
+    .border-l {
+        border-right: 1px solid #d65164;
     }
 
     .banner>img:last-child {
@@ -318,4 +317,8 @@
         justify-content: center;
         align-items: center;
         position: absolute;
+    }
+
+    .border-l {
+        border-right: 1px solid #d65164;
     }
