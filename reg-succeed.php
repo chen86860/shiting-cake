@@ -26,8 +26,16 @@ if (isset($_COOKIE['username'])) {
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
         .reg-succed {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 200px;
+        }
+
+        .reg-succed div {
+            width: 100%;
             text-align: center;
-            margin: 300px auto;
         }
 
         .reg a {
@@ -37,17 +45,18 @@ if (isset($_COOKIE['username'])) {
         .reg-succed a {
             border: none !important;
             display: inline-block;
-            width: 162px;
-            height: 48px;
+            width: 120px;
+            height: 43px;
             background-color: #d65164;
             color: #fff;
-            line-height: 48px;
+            line-height: 43px;
             margin: 80px 0;
             border-radius: 4px;
+            transition: background-color 600ms ease-out;
         }
 
         .reg-succed a:hover {
-            background-color: #d65164;
+            background-color: #e46073;
         }
 
         h1 {
@@ -75,8 +84,12 @@ if (isset($_COOKIE['username'])) {
     </ul>
 </nav>
 <div class="reg-succed">
-    <h1>注册成功！立即开始购物吧！</h1>
-    <a href="index.php">立即开始</a></div>
+    <div>
+        <h1>注册成功！立即开始购物吧！</h1>
+    </div>
+    <div>
+        <a href="index.php">立即开始</a></div>
+</div>
 <div class="fooer-helper"></div>
 <footer>
     <div class="footer-warp-container">

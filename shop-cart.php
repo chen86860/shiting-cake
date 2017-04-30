@@ -1,5 +1,4 @@
 <?php
-header("Content-Type: text/html;charset=utf-8");
 session_start();
 if (!isset($_SESSION['id'])) {
     header("location:./login.php");
@@ -7,17 +6,19 @@ if (!isset($_SESSION['id'])) {
 }
 
 $userId = $_SESSION['id'];
-
-include "conn.php";
-$sql_cart = <<<cici
+$session_id = session_id();
+try {
+    include "conn.php";
+    $sql_cart = <<<cici
 select * from cart where userId = '$userId';
 cici;
-
 // Cart
-mysqli_query($link, "set character set 'utf8'");
-$res_cart = mysqli_fetch_all(mysqli_query($link, $sql_cart), MYSQL_ASSOC);
-
-mysqli_close($link);
+    mysqli_query($link, "set character set 'utf8'");
+    $res_cart = mysqli_fetch_all(mysqli_query($link, $sql_cart), MYSQL_ASSOC);
+    mysqli_close($link);
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,6 @@ mysqli_close($link);
     <title>购物车</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
-
         .shop-car-wrap {
             width: 1200px;
             margin: 40px auto 80px;
@@ -172,7 +172,6 @@ mysqli_close($link);
             border: 0;
             width: 130px;
             color: #fff;
-            /* padding: 14px 0 10px; */
             font-size: 16px;
             text-align: center;
             align-items: center;
@@ -183,7 +182,6 @@ mysqli_close($link);
         }
     </style>
 </head>
-
 <body>
 <nav>
         <span class="logo">
@@ -203,18 +201,13 @@ mysqli_close($link);
                     </span>
         </li>
         <li><span class="reg">
-                   <?php
-                   if (isset($_COOKIE['username'])) {
-
-                       echo '<a href=my-order.php>' . $_COOKIE['username'] . "</a>";
-
-                   } else {
-
-                       echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
-
-                   }
-
-                   ?>
+                  <?php
+                  if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
+                      echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                  } else {
+                      echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
+                  }
+                  ?>
                     </span>
         </li>
     </ul>
@@ -232,27 +225,27 @@ mysqli_close($link);
         <?php
         for ($i = 0; $i < sizeof($res_cart); $i++) {
             echo '<div class="list-good-wrap"><div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value=""></div>
-            <div class="list-head-2 list-good"><a href=detail.php?id=' . $res_cart[$i]['id'] . ' class="list-good-img"><img src="' . $res_cart[$i]['img'] . '" alt=""></a> <a href=detail.php?id=' . $res_cart[$i]['id'] . '>
+            <div class="list-head-2 list-good"><a href=detail.php?id=' . $res_cart[$i]['goodId'] . ' class="list-good-img"><img src="' . $res_cart[$i]['img'] . '" alt=""></a> <a href=detail.php?id=' . $res_cart[$i]['goodId'] . '>
                     <p>
                     ' . $res_cart[$i]['title'] . '
                     </p>
                 </a>
             </div>
-            <div class="list-head-1">¥ ' . $res_cart[$i]['price'] . '</div>
+            <div class="list-head-1">¥<span class="price-sigle"> ' . $res_cart[$i]['price'] . '</span></div>
             <div class="list-head-1">
                     <span class="list-btn-count">
-                    <button type="" class="_addBtn">-</button>
-                    <input type="text" value="1">
-                    <button class="addBtn">+</button>
-                </span>
+                        <button type="button" class="subBtn">-</button>
+                        <input alt=' . $res_cart[$i]['goodId'] . ' type="text" class="good-count" value="' . $res_cart[$i]['count'] . '">
+                        <button type="button" class="addBtn">+</button>
+                    </span>
             </div>
             <div class="list-head-1">¥
                 <span class="list-price">
-                    ' . $res_cart[$i]['price'] * $res_cart[$i]['count'] . '
+                    ' . $res_cart[$i]['price'] * $res_cart[$i]['count'] . '.00
                 </span>
             </div>
             <div class="list-head-1">
-                <a href="">
+                <a href="javascript:delGood(' . $res_cart[$i]['goodId'] . ')">
                     删除
                 </a>
             </div>
@@ -267,11 +260,11 @@ mysqli_close($link);
         <div class="shop-cls-check">
             <p>
                 已选商品
-                <span class="info-important">
+                <span class="info-important" id="totalCount">
                     1
                     </span> 件合计（不含运费）： ￥
-                <span class="info-important">
-                    2149.00
+                <span class="info-important" id="totalPrice">
+                    2149
                     </span>
             </p>
             <button>
@@ -310,22 +303,92 @@ mysqli_close($link);
     </div>
 </footer>
 <script>
-    var _addBtn = document.getElementsByClassName("_addBtn")[0]
-    var addBtn = document.getElementsByClassName("addBtn")[0]
-    var priceNode = document.getElementsByClassName("list-price")[0]
-    var price = priceNode.firstChild.nodeValue.trim()
-    var input = document.getElementsByClassName("list-btn-count")[0].querySelector("input")
-    _addBtn.addEventListener('click', (e) => {
-        if (input.value <= 1) {
-            return false
+    ((doc, win) => {
+        let subBtns = doc.getElementsByClassName("subBtn"),
+            addBtns = doc.getElementsByClassName("addBtn"),
+            prices = doc.getElementsByClassName("list-price"),
+            goodCounts = doc.getElementsByClassName("good-count"),
+            totalPrice = doc.getElementById('totalPrice'),
+            totalCount = doc.getElementById('totalCount')
+
+
+        let updateCart = () => {
+            return {
+                add: (id, count = 1) => {
+                    let data = "action=cartCountAdd&id=" + id + "&count=" + count
+                    Ajax('./common.php', 'post', data, (res) => {
+                        console.log(res)
+//                        if (JSON.parse(res)['code'] === 0) {
+//                            console.log('add cart succeed!')
+//                        } else {
+//                            console.log('network err')
+//                        }
+                    })
+                },
+                sub: (id, count = 1) => {
+                    let data = "action=cartCountSub&id=" + id + "&count=" + count
+                    Ajax('./common.php', 'post', data, (res) => {
+                        console.log(res)
+//                        if (JSON.parse(res)['code'] === 0) {
+//                            console.log('sub cart succeed!')
+//                        } else {
+//                            console.log('network err')
+//                        }
+                    })
+                }
+            }
         }
-        input.value--
-        priceNode.firstChild.nodeValue = parseInt(price, 10) * parseInt(input.value)
-    })
-    addBtn.addEventListener('click', (e) => {
-        input.value++;
-        priceNode.firstChild.nodeValue = parseInt(price, 10) * parseInt(input.value)
-    })
+        let Ajax = (url, method, parms, callback) => {
+            var request = new XMLHttpRequest()
+            if (request) {
+                request.open(method, url, true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.onreadystatechange = function () {
+                    if (request.readyState == 4 && request.status == 200) {
+                        callback(request.response)
+                    }
+                }
+                request.send(parms + "&session_id=" + "<?php echo $session_id?>")
+                return true
+            } else {
+                alert('Sorry,your browser doesn\'t support XMLHttpRequeset');
+                return false
+            }
+        }
+
+        let updatecart = updateCart()
+        Array.prototype.forEach.call(subBtns, (el) => {
+            el.addEventListener(('click'), (e) => {
+                let price = parseInt(e.target.parentElement.parentElement.previousElementSibling.firstElementChild.innerText, 10)
+                let goodId = parseInt(e.target.nextElementSibling.alt, 10)
+                let count = {
+                    set: (t) => {
+                        e.target.nextElementSibling.value = t
+                    },
+                    get: () => {
+                        return parseInt(e.target.nextElementSibling.value, 10)
+                    },
+                    sub: (t) => {
+                        if (parseInt(e.target.nextElementSibling.value, 10) < 2) return false
+                        e.target.nextElementSibling.value -= t ? t : 1
+                        totalPrice.innerText = parseInt(totalPrice.innerText, 10) - price + '.00'
+                        updatecart.sub(goodId)
+                        return true
+                    }
+                }
+                let total = {
+                    set: (t) => {
+                        e.target.parentElement.parentElement.nextElementSibling.firstElementChild.innerText = t + '.00'
+                    },
+                    get: () => {
+                        return parseInt(e.target.parentElement.parentElement.nextElementSibling.firstElementChild.innerText, 10)
+                    }
+                }
+                if (!count.sub()) return
+                total.set(price * count.get())
+            })
+        });
+    })(document, window);
 </script>
 </body>
 

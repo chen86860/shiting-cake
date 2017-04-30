@@ -141,11 +141,8 @@ mysqli_close($link);
 </div>
 <?php
 for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
-
     echo '<div class="goods"><div class="goods-warp">';
-
     for ($i = $j * 4; $i <= ($j + 1) * 4 - 1; $i++) {
-
         echo "<div>
                     <a href=detail.php?id=" . $res_goods[$i]['id'] . "><img src='" . $res_goods[$i]['img'] . "' alt=''>
                     </a>

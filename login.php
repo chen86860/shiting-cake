@@ -9,29 +9,32 @@ function redirect($string)
     echo '</script>';
 }
 
-include "conn.php";
 //登录判断
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
-    setcookie('username', $username, time() - 1000);
-    setcookie('username', $username);
     $random_str = "9-l,.gf043";
     $password = md5($_POST['password'] . $_POST['username'] . $random_str);
-    $sql_login = <<<cici
+    try {
+
+        include "conn.php";
+        $sql_login = <<<cici
 select * from userdata where username = '$username' and password = '$password';
 cici;
-    $num = mysqli_num_rows(mysqli_query($link, $sql_login));
-    $result = mysqli_fetch_assoc(mysqli_query($link, $sql_login));
+        $num = mysqli_num_rows(mysqli_query($link, $sql_login));
+        $result = mysqli_fetch_assoc(mysqli_query($link, $sql_login));
 
-    if ($num != 0) {
-        setcookie('username', $username);
-        $_SESSION['id'] = $result['id'];
-        redirect("./index.php");
-    } else {
-        $errmsg = "用户名或密码错误";
+        if ($num != 0) {
+            setcookie('username', $username);
+            $_SESSION['id'] = $result['id'];
+            redirect("./index.php");
+        } else {
+            $errmsg = "用户名或密码错误";
+        }
+        mysqli_close($link);
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
 }
-mysqli_close($link)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,12 +87,13 @@ mysqli_close($link)
             outline: none;
         }
 
-        .btnlogin > p > input[type="submit"] {
-            width: 224px;
-            height: 40px;
+        #btn_login {
+            margin-top: 6px;
+            width: 227px;
+            padding: 0;
+            height: 39px;
             border-radius: 3px;
             border: none;
-            border: 1px solid #d65164;
             margin-left: 3px;
             line-height: 40px;
             text-decoration: none;
@@ -99,10 +103,10 @@ mysqli_close($link)
             background-color: #d65164;
             outline: none;
             cursor: pointer;
-            transition: background-color 400ms ease-out;
+            transition: background-color 600ms ease-out;
         }
 
-        .btnlogin > p > input[type="submit"]:hover {
+        #btn_login:hover {
             background-color: #e46073;
         }
 
@@ -112,16 +116,15 @@ mysqli_close($link)
             color: #222;
         }
 
-        .text2 {
+        .text2, .text1 {
             position: relative;
         }
 
-        .errmsg {
+        .erruser, .errmsg {
             position: absolute;
             right: 107px;
             top: 6px;
             background-color: #ffffff;
-            /* box-shadow: -2px 0 4px #e6e6e6; */
             height: 37px;
             line-height: 37px;
             border-radius: 2px;
@@ -132,7 +135,6 @@ mysqli_close($link)
         }
     </style>
 </head>
-
 <body>
 <nav>
         <span class="logo">
@@ -146,29 +148,23 @@ mysqli_close($link)
         <ul>
             <li>
                 <p class="text1">
-                    <input type="text" <?php if (isset($_COOKIE['username'])) {
-                        echo "value=" . $_COOKIE['username'];
-                    } ?> placeholder="用户名" name="username">
+                    <input type="text" placeholder="用户名" name="username">
+                    <span class="erruser"></span>
                 </p>
             </li>
             <li>
                 <p class="text2">
                     <input type="password" placeholder="密码" name="password">
-                    <?php
-                    if ($errmsg != "") {
-                        echo "<span class='errmsg'>" . $errmsg . "</span>";
-                        echo "<script>";
-                        echo "var err = document.querySelector('.errmsg');setTimeout(function(){err.style.opacity = 0},2000)";
-                        echo "</script>";
-                    }
-                    ?>
+                    <span class="errmsg">
+                        <?php if ($errmsg != "") {
+                            echo $errmsg;
+                        } ?>
+                    </span>
                 </p>
-
             </li>
-
             <li class="btnlogin">
                 <p>
-                    <input type="submit" value="登录">
+                    <input type="submit" value="登录" id="btn_login">
                 </p>
             </li>
             <li>
@@ -208,18 +204,63 @@ mysqli_close($link)
 </footer>
 <script>
     ((doc, win) => {
-        let form = doc.getElementsByTagName('form')[0]
-        let username = doc.getElementsByName('username')[0]
-        let password = doc.getElementsByName('password')[0]
+        let form = doc.getElementsByTagName('form')[0],
+            username = doc.getElementsByName('username')[0],
+            password = doc.getElementsByName('password')[0],
+            errmsg = doc.querySelector(".errmsg"),
+            erruser = doc.querySelector(".erruser"),
+            cookieUser = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         let check = {
             username: () => {
-                return username.value.length > 3
+                if (username.value.length === 0) {
+                    erruser.innerText = "请输入用户名"
+                    tip.username()
+                    return false
+                }
+                if (!((/^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){3,13}$/).test(username.value))) {
+                    erruser.innerText = "用户名格式不正确哇~"
+                    tip.username()
+                    return false
+                } else {
+                    return true
+                }
             },
             password: () => {
-                return password.value.length > 3
+                if (password.value.length === 0) {
+                    errmsg.innerText = "请输入密码"
+                    tip.password()
+                    return false
+                }
+                if (!((/^([a-zA-Z0-9]|[_]){5,17}$/).test(password.value))) {
+                    errmsg.innerText = "密码格式不正确哇~"
+                    tip.password()
+                    return false
+                } else {
+                    return true
+                }
+            }
+        }
+        let tip = {
+            username: () => {
+                if (erruser.innerText !== '') {
+                    erruser.style.opacity = 1
+                    setTimeout(() => {
+                        erruser.style.opacity = 0
+                    }, 2000)
+                }
+            },
+            password: () => {
+                if (errmsg.innerText !== '') {
+                    errmsg.style.opacity = 1
+                    setTimeout(() => {
+                        errmsg.style.opacity = 0
+                    }, 1000)
+                }
             }
         }
 
+        username.value = cookieUser ? cookieUser : ''
+        tip.password()
         if (username.value === '') {
             username.focus()
         } else {
@@ -227,26 +268,23 @@ mysqli_close($link)
         }
         form.addEventListener('submit', (e) => {
             if (!check.username()) {
-                alert("用户名不对哇~~")
                 username.focus()
                 e.preventDefault()
             }
             if (!check.password()) {
-                alert("密码长度不对~~")
                 password.focus()
                 e.preventDefault()
             }
+            doc.cookie = "username=" + username.value
         })
         addEventListener('keypress', (e) => {
             if (e.keyCode === 13) {
                 if (!check.username()) {
-                    alert("用户名不对哇~~")
                     username.focus()
                     e.preventDefault()
                     return
                 }
                 if (!check.password()) {
-                    alert("密码长度不对~~")
                     password.focus()
                     e.preventDefault()
                     return

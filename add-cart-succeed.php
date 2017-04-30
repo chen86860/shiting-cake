@@ -20,8 +20,16 @@ if (!isset($_SESSION['id'])) {
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
         .cart-succed {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 200px;
+        }
+
+        .cart-succed div {
+            width: 100%;
             text-align: center;
-            margin: 300px auto;
         }
 
         .cart a {
@@ -31,17 +39,18 @@ if (!isset($_SESSION['id'])) {
         .cart-succed a {
             border: none !important;
             display: inline-block;
-            width: 162px;
-            height: 48px;
+            width: 120px;
+            height: 43px;
             background-color: #d65164;
             color: #fff;
-            line-height: 48px;
+            line-height: 43px;
             margin: 80px 0;
             border-radius: 4px;
+            transition: background-color 600ms ease-out;
         }
 
         .cart-succed a:hover {
-            background-color: #d65164;
+            background-color: #e46073;
         }
 
         h1 {
@@ -71,8 +80,12 @@ if (!isset($_SESSION['id'])) {
     </ul>
 </nav>
 <div class="cart-succed">
-    <h1>商品已成功加入购物车！</h1>
-    <a href="shop-cart.php">去购物车结算</a></div>
+    <div>
+        <h1>商品已成功加入购物车！</h1>
+    </div>
+    <div>
+        <a href="shop-cart.php">去购物车结算</a></div>
+    </div>
 <div class="fooer-helper"></div>
 <footer>
     <div class="footer-warp-container">

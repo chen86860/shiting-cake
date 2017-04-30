@@ -1,20 +1,20 @@
 <?php
+session_start();
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-
-    include "conn.php";
-
-    $sql_goods_detail = <<<cici
+    try {
+        include "conn.php";
+        $sql_goods_detail = <<<cici
 select * from goods where id = '$_GET[id]';
 cici;
-
-    mysqli_query($link, "set character set 'utf8'");
-    //读	库
-    $res_goods_detail = mysqli_fetch_array(mysqli_query($link, $sql_goods_detail), MYSQL_ASSOC);
-
+        mysqli_query($link, "set character set 'utf8'");
+        //读	库
+        $res_goods_detail = mysqli_fetch_array(mysqli_query($link, $sql_goods_detail), MYSQL_ASSOC);
+        mysqli_close($link);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 } else {
-
     header("location:./index.php");
-
 }
 
 ?>
@@ -79,10 +79,7 @@ cici;
         }
 
         .detail-wrap > div:first-child img {
-            /*width: 460px;*/
-            /*max-width: 80%;*/
             max-width: 460px;
-            /* max-width: 80%; */
             max-height: 300px;
         }
 
@@ -166,12 +163,12 @@ cici;
         .list-count > p {
             display: flex
         }
-        .addBtn,.subBtn{
+
+        .addBtn, .subBtn {
             cursor: pointer;
         }
     </style>
 </head>
-
 <body>
 <nav>
         <span class="logo">
@@ -190,8 +187,13 @@ cici;
                     </span>
         </li>
         <li><span class="reg">
-                    <a href="login.php">登录</a>
-                    <a href="register.php">注册</a>
+                    <?php
+                    if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
+                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                    } else {
+                        echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
+                    }
+                    ?>
                     </span>
         </li>
         <li><span class="cart">

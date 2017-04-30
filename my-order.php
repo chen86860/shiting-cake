@@ -11,6 +11,7 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,9 +62,13 @@ if (!isset($_SESSION['id'])) {
         <li>
         </li>
         <li><span class="order">
-                    <a href="#">
-                        <?php echo $username ?>
-                    </a>
+                      <?php
+                      if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
+                          echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                      } else {
+                          echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
+                      }
+                      ?>
                     </span>
         </li>
     </ul>
