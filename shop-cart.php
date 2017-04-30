@@ -180,6 +180,14 @@ cici;
             height: 100%;
             display: inline-block;
         }
+
+        .delBtn {
+            color: #2d2d2d;
+        }
+
+        .delBtn:hover {
+            color: #d65164;
+        }
     </style>
 </head>
 <body>
@@ -214,7 +222,9 @@ cici;
 </nav>
 <div class="shop-car-wrap">
     <div class="list-head">
-        <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value="">全选</div>
+        <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value="" title="全选"
+                                                           id="cart-check-all">全选
+        </div>
         <div class="list-head-2">商品</div>
         <div class="list-head-1">单价</div>
         <div class="list-head-1">数量</div>
@@ -224,7 +234,7 @@ cici;
     <div class="list-body">
         <?php
         for ($i = 0; $i < sizeof($res_cart); $i++) {
-            echo '<div class="list-good-wrap"><div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value=""></div>
+            echo '<div class="list-good-wrap"><div class="list-head-1 list-head-checkbox"><input class="cart-checkbox" type="checkbox"' . (($res_cart[$i]['checked'] == 1) ? 'checked' : '') . ' name="" value="' . $res_cart[$i]['goodId'] . '"></div>
             <div class="list-head-2 list-good"><a href=detail.php?id=' . $res_cart[$i]['goodId'] . ' class="list-good-img"><img src="' . $res_cart[$i]['img'] . '" alt=""></a> <a href=detail.php?id=' . $res_cart[$i]['goodId'] . '>
                     <p>
                     ' . $res_cart[$i]['title'] . '
@@ -245,7 +255,7 @@ cici;
                 </span>
             </div>
             <div class="list-head-1">
-                <a href="javascript:delGood(' . $res_cart[$i]['goodId'] . ')">
+                <a class="delBtn" href="#" rel="' . $res_cart[$i]['goodId'] . ')">
                     删除
                 </a>
             </div>
@@ -255,7 +265,6 @@ cici;
     </div>
     <div class="shop-cls">
         <div class="shop-cls-checkbox">
-            <input type="checkbox" name="" value="">全选
         </div>
         <div class="shop-cls-check">
             <p>
@@ -306,6 +315,8 @@ cici;
     ((doc, win) => {
         let subBtns = doc.getElementsByClassName("subBtn"),
             addBtns = doc.getElementsByClassName("addBtn"),
+            checkboxs = doc.getElementsByClassName("cart-checkbox"),
+            allCheckbox = doc.getElementById("cart-check-all"),
             prices = doc.getElementsByClassName("list-price"),
             goodCounts = doc.getElementsByClassName("good-count"),
             totalPrice = doc.getElementById('totalPrice'),
@@ -317,24 +328,63 @@ cici;
                 add: (id, count = 1) => {
                     let data = "action=cartCountAdd&id=" + id + "&count=" + count
                     Ajax('./common.php', 'post', data, (res) => {
-                        console.log(res)
-//                        if (JSON.parse(res)['code'] === 0) {
-//                            console.log('add cart succeed!')
-//                        } else {
-//                            console.log('network err')
-//                        }
+                        if (JSON.parse(res)['code'] === 0) {
+                            console.log('add cart succeed!')
+                        } else {
+                            console.log('network err')
+                        }
                     })
                 },
                 sub: (id, count = 1) => {
                     let data = "action=cartCountSub&id=" + id + "&count=" + count
                     Ajax('./common.php', 'post', data, (res) => {
-                        console.log(res)
-//                        if (JSON.parse(res)['code'] === 0) {
-//                            console.log('sub cart succeed!')
-//                        } else {
-//                            console.log('network err')
-//                        }
+                        if (JSON.parse(res)['code'] === 0) {
+                            console.log('sub cart succeed!')
+                        } else {
+                            console.log('network err')
+                        }
                     })
+                },
+                check: (id) => {
+                    let data = "action=cartGoodCheck&id=" + id
+                    Ajax('./common.php', 'post', data, (res) => {
+                        if (JSON.parse(res)['code'] === 0) {
+                            console.log('check state changed')
+                            updatecart.checkAllChange()
+                        } else {
+                            console.log('network err')
+                        }
+                    })
+                },
+                checkAll: (check) => {
+                    [].forEach.call(checkboxs, (el) => {
+                        el.checked = check ? 'checked' : false
+                    })
+                    updatecart.checkAllChange()
+                    let state = check ? 1 : 0
+                    let data = "action=cartAllGoodCheck&state=" + state
+                    console.log(data)
+                    Ajax('./common.php', 'post', data, (res) => {
+                        console.log(res)
+                        if (JSON.parse(res)['code'] === 0) {
+                            console.log('check all state changed')
+                        } else {
+                            console.log('network err')
+                        }
+                    })
+                },
+                checkAllChange: () => {
+                    let passed = [].every.call(checkboxs, (el) => {
+                        return el.checked
+                    })
+                    updatecart.changeSync(passed)
+                },
+                changeSync: (passed) => {
+                    if (passed) {
+                        allCheckbox.checked = true
+                    } else {
+                        allCheckbox.checked = false
+                    }
                 }
             }
         }
@@ -344,11 +394,11 @@ cici;
                 request.open(method, url, true);
                 request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 request.onreadystatechange = function () {
-                    if (request.readyState == 4 && request.status == 200) {
+                    if (request.readyState === 4 && request.status === 200) {
                         callback(request.response)
                     }
                 }
-                request.send(parms + "&session_id=" + "<?php echo $session_id?>")
+                request.send(parms)
                 return true
             } else {
                 alert('Sorry,your browser doesn\'t support XMLHttpRequeset');
@@ -356,7 +406,9 @@ cici;
             }
         }
 
+        // 实例化操作购物车
         let updatecart = updateCart()
+        // 增加商品数量
         Array.prototype.forEach.call(subBtns, (el) => {
             el.addEventListener(('click'), (e) => {
                 let price = parseInt(e.target.parentElement.parentElement.previousElementSibling.firstElementChild.innerText, 10)
@@ -388,6 +440,51 @@ cici;
                 total.set(price * count.get())
             })
         });
+        // 减少商品数量
+        Array.prototype.forEach.call(addBtns, (el) => {
+            el.addEventListener(('click'), (e) => {
+                console.log(e)
+                let price = parseInt(e.target.parentNode.parentNode.previousElementSibling.firstElementChild.innerText, 10)
+                let goodId = parseInt(e.target.previousElementSibling.alt, 10)
+                let count = {
+                    set: (t) => {
+                        e.target.previousElementSibling.value = t
+                    },
+                    get: () => {
+                        return parseInt(e.target.previousElementSibling.value, 10)
+                    },
+                    add: (t) => {
+                        e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value, 10) + (t ? t : 1)
+                        totalPrice.innerText = parseInt(totalPrice.innerText, 10) + price + '.00'
+                        updatecart.add(goodId, t)
+                        return true
+                    }
+                }
+                let total = {
+                    set: (t) => {
+                        e.target.parentElement.parentNode.nextElementSibling.firstElementChild.innerText = t + '.00'
+                    },
+                    get: () => {
+                        return parseInt(e.target.parentElement.parentNode.nextElementSibling.firstElementChild.innerText, 10)
+                    }
+                }
+                if (!count.add()) return
+                total.set(price * count.get())
+            })
+        })
+        // 选择盒子状态
+        Array.prototype.forEach.call(checkboxs, (el) => {
+            el.addEventListener('change', (e) => {
+                let goodId = parseInt(e.target.value, 10)
+                updatecart.check(goodId)
+
+            })
+        });
+        updatecart.checkAllChange()
+        // 全部选择盒子状态
+        allCheckbox.addEventListener('change', (e) => {
+            updatecart.checkAll(e.target.checked)
+        })
     })(document, window);
 </script>
 </body>
