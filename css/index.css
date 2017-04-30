@@ -334,3 +334,6 @@ footer {
 .border-l {
     border-right: 1px solid #d65164;
 }
+.cart img{
+    width: 20px;
+}

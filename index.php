@@ -22,7 +22,6 @@ mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +50,7 @@ mysqli_close($link);
             <li><span class="reg">
                     <?php
                     if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
-                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut()>退出</a>";
                     } else {
                         echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
                     }
@@ -59,7 +58,7 @@ mysqli_close($link);
                 </span>
             </li>
             <li><span class="cart">
-                <img src="img/gouwuche.png" alt="">
+                <img src="img/cart-color.svg" alt="">
                 <a href="shop-cart.php">我的购物车</a>
                 </span>
             </li>
@@ -189,17 +188,16 @@ for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
     </div>
 </footer>
 <script>
-    function signOut(username) {
-        var data = "action=signOut&username=" + username;
+    function signOut() {
+        var data = "action=signOut"
         postData('./common.php', 'post', data, function (res) {
-            if (JSON.parse(res)['code'] == 0) {
+            if (JSON.parse(res)['code'] === 0) {
                 location.href = "./index"
             } else {
                 alert("e...网络故障")
             }
         })
     }
-
     function postData(url, method, parms, callback) {
         var request = new XMLHttpRequest()
         if (request) {

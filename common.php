@@ -21,9 +21,6 @@ try {
 //     开放接口，不要求用户登录
     if (isset($_POST['action']) && $_POST['action'] == 'checkUser') {
         $username = $_POST['username'];
-        $response = array(
-            'errmsg' => $username,
-        );
         $sql_check_user = <<<cici
 select username from userdata where username = '$username'
 cici;
@@ -50,14 +47,19 @@ cici;
                 'data' => false,
             );
         }
+//        mysqli_close($link);
+        echo json_encode($response);
+        exit;
     }
 //     权限控制，当用户没有登录时，阻止使用接口
     if (!isset($_SESSION['id'])) {
         header("location:./login.php");
         mysqli_close($link);
         exit;
+    } else {
+        $userId = $_SESSION['id'];
     }
-    $userId = $_SESSION['id'];
+
 
     // 购物车操作部分
     // 增加购物车物品数量
@@ -133,6 +135,25 @@ cici;
     if (isset($_POST['action']) && $_POST['action'] == 'cartAllGoodCheck' && isset($_POST['state'])) {
         $state = $_POST['state'];
         $sql_good_check = "update cart set checked = $state where userId = $userId;";
+        mysqli_query($link, $sql_good_check);
+        if (mysqli_affected_rows($link) > 0) {
+            $response = array(
+                'code' => 0,
+                'errmsg' => 'success',
+                'data' => '',
+            );
+        } else {
+            $response = array(
+                'code' => -1,
+                'errmsg' => 'bad',
+                'data' => 'err',
+            );
+        }
+    }
+    // 更改购物车物品全部选中状态
+    if (isset($_POST['action']) && $_POST['action'] == 'cartGoodDel' && isset($_POST['id'])) {
+        $goodId = $_POST['id'];
+        $sql_good_check = "delete from cart where userId = $userId and goodId = $goodId";
         mysqli_query($link, $sql_good_check);
         if (mysqli_affected_rows($link) > 0) {
             $response = array(

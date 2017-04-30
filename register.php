@@ -475,9 +475,9 @@ cici;
             clearTimeout(timer)
             timer = setTimeout((inputStr) => {
                 let data = 'action=checkUser&username=' + inputStr
-
                 Ajax('./common.php', 'post', data, (res) => {
-                    if ((JSON.parse(res))['code'] == 0) {
+                    console.log(res)
+                    if ((JSON.parse(res))['code'] === 0) {
                         tip.succeed("恭喜，该用户名可注册~(•̀ω•́ )ゝ")
                         sign.remove('username')
                         doc.dispatchEvent(eventKeyup)

@@ -59,9 +59,18 @@ if (isset($_COOKIE['username'])) {
             background-color: #e46073;
         }
 
+        .reg-succed img {
+            width: 60px;
+            padding: 0 10px 0;
+        }
+
         h1 {
             color: #1d1d1d;
-            font-weight: 300;
+            font-weight: 400;
+            display: flex;
+            font-size: 20px;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -84,7 +93,7 @@ if (isset($_COOKIE['username'])) {
     </ul>
 </nav>
 <div class="reg-succed">
-    <div>
+    <div><img src="./img/finished.png" alt="">
         <h1>注册成功！立即开始购物吧！</h1>
     </div>
     <div>

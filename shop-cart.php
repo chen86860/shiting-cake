@@ -51,10 +51,19 @@ cici;
             display: flex;
             width: 100%;
             background: #ffffff;
-            border-bottom: 1px solid #ccc;
+            border: 1px solid #eee;
             padding: 15px 0 15px;
             margin: 6px 0 0;
-            border: 1px solid #eee;
+            -webkit-transition: background-color 400ms;
+            -moz-transition: background-color 400ms;
+            -ms-transition: background-color 400ms;
+            -o-transition: background-color 400ms;
+            transition: background-color 400ms;
+        }
+
+        .list-good-wrap:hover {
+            background-color: #fbfbfb;
+            border-color: #d8d8d8;
         }
 
         .list-head-1 {
@@ -97,6 +106,8 @@ cici;
             color: #444;
             align-self: flex-start;
             transition: background-color 300ms;
+            height: 88px;
+            text-align: center;
         }
 
         .list-good a:hover {
@@ -111,33 +122,46 @@ cici;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 6px 12px;
             width: 100px;
             box-sizing: border-box;
         }
 
         .list-good-img img {
-            width: 100%;
+            max-height: 100%;
         }
 
         .list-btn-count {
             display: flex;
             align-items: center;
+            height: 30px;
         }
 
         .list-btn-count input {
-            width: 20px;
-            border: 1px solid #cacaca;
+            width: 26px;
+            border: 1px solid #a9a9a9;
             background-color: #fff;
             color: #000;
             text-align: center;
+            border-left: none;
+            border-right: none;
+            border-right: none;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .list-btn-count button {
-            border: 1px solid #cacaca;
+            height: 100%;
+            border: 1px solid #a9a9a9;
             background-color: #fff;
-            color: #cacaca;
-            outline: none
+            color: #909090;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .list-btn-count button:hover {
+            border-color: #d65164;;
+            color: #d65164;
         }
 
         .shop-cls {
@@ -181,11 +205,113 @@ cici;
             display: inline-block;
         }
 
-        .delBtn {
+        .cart-del {
             color: #2d2d2d;
         }
 
-        .delBtn:hover {
+        .cart-del:hover {
+            color: #d65164;
+        }
+
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            position: relative;
+            top: 0;
+            border-radius: 18px;
+            border: 1px solid #ababab;
+            top: 5px;
+        }
+
+        input[type="checkbox"]:after {
+
+        }
+
+        input[type="checkbox"]:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #d65164;
+            border: none;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        input[type="checkbox"]:checked:after {
+            content: '\2714';
+            font-size: 14px;
+            position: absolute;
+            top: 0px;
+            left: 3px;
+            color: #fff;
+        }
+
+        .list-head-checkbox-i {
+            width: 60px;
+            margin: 0 0px 0 17px !important;
+            display: flex;
+            align-items: center !important;
+            justify-content: center !important;
+
+        }
+
+        .list-head-checkbox-i > input {
+            margin: 0;
+            margin-right: 10px;
+            top: 1px;
+        }
+
+        .shop-cls-checkbox {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shop-cls-checkbox input[type="checkbox"] {
+            top: -1px;
+        }
+
+        .shop-car-wrap-none {
+            display: none;
+            width: 1200px;
+            margin: 20px auto;
+        }
+
+        .shop-car-wrap-none.no-goods-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .no-goods-wrap {
+            width: 400px;
+            margin: 200px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .no-goods-wrap img {
+            width: 40px;
+            /* height: 40px; */
+            margin: 0 20px 0;
+        }
+
+        .no-goods-wrap div {
+            flex: 1;
+        }
+
+        .no-goods-wrap p {
+            margin: 0;
+        }
+
+        a {
             color: #d65164;
         }
     </style>
@@ -222,8 +348,10 @@ cici;
 </nav>
 <div class="shop-car-wrap">
     <div class="list-head">
-        <div class="list-head-1 list-head-checkbox"><input type="checkbox" name="" value="" title="全选"
-                                                           id="cart-check-all">全选
+        <div class="list-head-1 list-head-checkbox list-head-checkbox-i"><input type="checkbox" name="" value=""
+                                                                                title="全选"
+                                                                                class="cart-check-all">
+            <span>全选</span>
         </div>
         <div class="list-head-2">商品</div>
         <div class="list-head-1">单价</div>
@@ -241,11 +369,11 @@ cici;
                     </p>
                 </a>
             </div>
-            <div class="list-head-1">¥<span class="price-sigle"> ' . $res_cart[$i]['price'] . '</span></div>
+            <div class="list-head-1">¥<span class="single-price"> ' . $res_cart[$i]['price'] . '</span></div>
             <div class="list-head-1">
                     <span class="list-btn-count">
                         <button type="button" class="subBtn">-</button>
-                        <input alt=' . $res_cart[$i]['goodId'] . ' type="text" class="good-count" value="' . $res_cart[$i]['count'] . '">
+                        <input alt=' . $res_cart[$i]['goodId'] . ' type="text" value="' . $res_cart[$i]['count'] . '">
                         <button type="button" class="addBtn">+</button>
                     </span>
             </div>
@@ -255,7 +383,7 @@ cici;
                 </span>
             </div>
             <div class="list-head-1">
-                <a class="delBtn" href="#" rel="' . $res_cart[$i]['goodId'] . ')">
+                <a class="cart-del" href="#" rel="' . $res_cart[$i]['goodId'] . '">
                     删除
                 </a>
             </div>
@@ -265,15 +393,17 @@ cici;
     </div>
     <div class="shop-cls">
         <div class="shop-cls-checkbox">
+            <input type="checkbox" name="" value="" title="全选"
+                   class="cart-check-all">全选
         </div>
         <div class="shop-cls-check">
             <p>
                 已选商品
                 <span class="info-important" id="totalCount">
-                    1
+                    0
                     </span> 件合计（不含运费）： ￥
                 <span class="info-important" id="totalPrice">
-                    2149
+                    0
                     </span>
             </p>
             <button>
@@ -282,7 +412,16 @@ cici;
         </div>
     </div>
 </div>
-<div class="fooer-helper"></div>
+<div class="shop-car-wrap-none">
+    <div class="no-goods-wrap">
+        <img src="./img/cart-color.svg" alt="">
+        <div>
+            <p>购物车空空如也~赶紧去首页看看吧~</p>
+            <a href="./index.php">去购物></a>
+        </div>
+    </div>
+</div>
+<div class="footer-helper"></div>
 <footer>
     <div class="footer-warp-container">
         <div class="footer-comm">
@@ -313,20 +452,38 @@ cici;
 </footer>
 <script>
     ((doc, win) => {
-        let subBtns = doc.getElementsByClassName("subBtn"),
-            addBtns = doc.getElementsByClassName("addBtn"),
-            checkboxs = doc.getElementsByClassName("cart-checkbox"),
-            allCheckbox = doc.getElementById("cart-check-all"),
-            prices = doc.getElementsByClassName("list-price"),
-            goodCounts = doc.getElementsByClassName("good-count"),
+        let subBtns = doc.getElementsByClassName('subBtn'),
+            addBtns = doc.getElementsByClassName('addBtn'),
+            checkboxs = doc.getElementsByClassName('cart-checkbox'),
+            allCheckbox = doc.getElementsByClassName('cart-check-all'),
+            singlePrice = doc.getElementsByClassName('list-price'),
             totalPrice = doc.getElementById('totalPrice'),
-            totalCount = doc.getElementById('totalCount')
-
+            totalCount = doc.getElementById('totalCount'),
+            cartDel = doc.getElementsByClassName('cart-del'),
+            noGoodsWrap = doc.querySelector('.shop-car-wrap-none'),
+            goodsWrap = doc.querySelector('.shop-car-wrap'),
+            cartCount = doc.getElementsByClassName('list-good-wrap'),
+            totalMi = 0
 
         let updateCart = () => {
             return {
+                __init: () => {
+                    if (parseInt(cartCount.length, 10) === 0) {
+                        goodsWrap.style.display = 'none'
+                        noGoodsWrap.style.display = 'inherit'
+                        return
+                    }
+                    Array.prototype.forEach.call(checkboxs, (el) => {
+                        let mi = parseInt(el.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.innerText, 10)
+                        if (el.checked) {
+                            updatecart.setTotal(mi, 'add')
+                        }
+                    });
+                    updatecart.checkAllChange()
+                    updatecart.goodsCount()
+                },
                 add: (id, count = 1) => {
-                    let data = "action=cartCountAdd&id=" + id + "&count=" + count
+                    let data = 'action=cartCountAdd&id=' + id + '&count=' + count
                     Ajax('./common.php', 'post', data, (res) => {
                         if (JSON.parse(res)['code'] === 0) {
                             console.log('add cart succeed!')
@@ -336,7 +493,7 @@ cici;
                     })
                 },
                 sub: (id, count = 1) => {
-                    let data = "action=cartCountSub&id=" + id + "&count=" + count
+                    let data = 'action=cartCountSub&id=' + id + '&count=' + count
                     Ajax('./common.php', 'post', data, (res) => {
                         if (JSON.parse(res)['code'] === 0) {
                             console.log('sub cart succeed!')
@@ -345,12 +502,27 @@ cici;
                         }
                     })
                 },
-                check: (id) => {
-                    let data = "action=cartGoodCheck&id=" + id
+                del: (id) => {
+                    let data = 'action=cartGoodDel&id=' + id
+                    Ajax('./common.php', 'post', data, (res) => {
+                        if (JSON.parse(res)['code'] === 0) {
+                            console.log('del succeed!')
+                        } else {
+                            console.log('network err')
+                        }
+                    })
+                },
+                check: (id, mi, t) => {
+                    let data = 'action=cartGoodCheck&id=' + id
                     Ajax('./common.php', 'post', data, (res) => {
                         if (JSON.parse(res)['code'] === 0) {
                             console.log('check state changed')
-                            updatecart.checkAllChange()
+                            updatecart.checkAllChange();
+                            if (t) {
+                                updatecart.setTotal(mi, 'add')
+                            } else {
+                                updatecart.setTotal(mi, 'sub')
+                            }
                         } else {
                             console.log('network err')
                         }
@@ -360,12 +532,15 @@ cici;
                     [].forEach.call(checkboxs, (el) => {
                         el.checked = check ? 'checked' : false
                     })
+                    if (check) {
+                        totalPrice.innerText = totalMi + '.00'
+                    } else {
+                        totalPrice.innerText = 0 + '.00'
+                    }
                     updatecart.checkAllChange()
                     let state = check ? 1 : 0
-                    let data = "action=cartAllGoodCheck&state=" + state
-                    console.log(data)
+                    let data = 'action=cartAllGoodCheck&state=' + state
                     Ajax('./common.php', 'post', data, (res) => {
-                        console.log(res)
                         if (JSON.parse(res)['code'] === 0) {
                             console.log('check all state changed')
                         } else {
@@ -377,13 +552,35 @@ cici;
                     let passed = [].every.call(checkboxs, (el) => {
                         return el.checked
                     })
+                    updatecart.goodsCount()
                     updatecart.changeSync(passed)
                 },
                 changeSync: (passed) => {
-                    if (passed) {
-                        allCheckbox.checked = true
-                    } else {
-                        allCheckbox.checked = false
+                    [].forEach.call(allCheckbox, (el) => {
+                        if (passed) {
+                            el.checked = true
+                        } else {
+                            el.checked = false
+                        }
+                    })
+                },
+                goodsCount: (t) => {
+                    let count = t ? t : 0;
+                    [].forEach.call(checkboxs, (el) => {
+                        if (el.checked) {
+                            count++
+                        }
+                    })
+                    console.log(count)
+                    totalCount.innerText = count
+                },
+                setTotal: (t, op) => {
+                    if (op === 'sub') {
+                        console.log((parseInt(totalPrice.innerText, 10)));
+                        console.log('T', t);
+                        totalPrice.innerText = (parseInt(totalPrice.innerText, 10)) - t + '.00';
+                    } else if (op === 'add') {
+                        totalPrice.innerText = (parseInt(totalPrice.innerText, 10)) + t + '.00';
                     }
                 }
             }
@@ -392,7 +589,7 @@ cici;
             var request = new XMLHttpRequest()
             if (request) {
                 request.open(method, url, true);
-                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 request.onreadystatechange = function () {
                     if (request.readyState === 4 && request.status === 200) {
                         callback(request.response)
@@ -406,8 +603,9 @@ cici;
             }
         }
 
-        // 实例化操作购物车
+        // 实例化购物车
         let updatecart = updateCart()
+        updatecart.__init()
         // 增加商品数量
         Array.prototype.forEach.call(subBtns, (el) => {
             el.addEventListener(('click'), (e) => {
@@ -443,7 +641,6 @@ cici;
         // 减少商品数量
         Array.prototype.forEach.call(addBtns, (el) => {
             el.addEventListener(('click'), (e) => {
-                console.log(e)
                 let price = parseInt(e.target.parentNode.parentNode.previousElementSibling.firstElementChild.innerText, 10)
                 let goodId = parseInt(e.target.previousElementSibling.alt, 10)
                 let count = {
@@ -475,17 +672,33 @@ cici;
         // 选择盒子状态
         Array.prototype.forEach.call(checkboxs, (el) => {
             el.addEventListener('change', (e) => {
+                let minTotal = parseInt(e.target.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.innerText, 10)
                 let goodId = parseInt(e.target.value, 10)
-                updatecart.check(goodId)
-
+                updatecart.check(goodId, minTotal, e.target.checked)
             })
         });
-        updatecart.checkAllChange()
-        // 全部选择盒
-        allCheckbox.addEventListener('change', (e) => {
-            updatecart.checkAll(e.target.checked)
+        // 选择全部盒子
+        Array.prototype.forEach.call(allCheckbox, (el) => {
+            el.addEventListener('change', (e) => {
+                updatecart.checkAll(e.target.checked)
+            })
         })
-    })(document, window);
+        Array.prototype.forEach.call(cartDel, (el) => {
+            el.addEventListener('click', (e) => {
+                if (win.confirm('删除商品吗？')) {
+                    e.target.parentNode.parentNode.remove()
+                    updatecart.del(parseInt(e.target.rel, 10))
+                    updatecart.goodsCount()
+                }
+            })
+        })
+        Array.prototype.forEach.call(singlePrice, (el) => {
+            totalMi += parseInt(el.innerText, 10)
+        })
+
+
+    })
+    (document, window);
 </script>
 </body>
 

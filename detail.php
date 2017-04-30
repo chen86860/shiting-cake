@@ -36,28 +36,6 @@ cici;
             border-right: 2px solid #d65164;
         }
 
-        .list-btn-count {
-            display: flex;
-        }
-
-        .list-btn-count input {
-            width: 40px;
-            border: none;
-            border-bottom: 1px solid #cacaca;
-            border-top: 1px solid #cacaca;
-            background-color: #fff;
-            color: #000;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .list-btn-count button {
-            border: 1px solid #cacaca;
-            background-color: #fff;
-            color: #cacaca;
-            outline: none
-        }
-
         .detail-wrap ul {
             list-style: none;
             padding: 0;
@@ -72,10 +50,14 @@ cici;
         }
 
         .detail-wrap > div:first-child {
-            width: 460px;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #efefef;
+            margin: 10px 0 43px 0;
+            box-sizing: border-box;
         }
 
         .detail-wrap > div:first-child img {
@@ -84,13 +66,13 @@ cici;
         }
 
         .detail-wrap > div:last-child {
-            flex: 1
+            flex: 1;
+            margin: 0 0 43px 35px;
         }
 
         .detail-wrap-dec1 > p {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 0;
+            font-size: 24px;
+            margin: 10px 0;
         }
 
         .detail-wrap-dec1 > p:last-child {
@@ -151,6 +133,10 @@ cici;
         .detail-wrap-info > li > p > span:first-child {
             color: #a9a9a9;
             padding-right: 14px;
+        }
+
+        .detail-wrap-info > li {
+            line-height: 30px;
         }
 
         .detail-wrap-body p {
@@ -232,9 +218,9 @@ cici;
                 <p>
                     <span>数量</span>
                     <span class="list-btn-count">
-                    <button type="" class="subBtn">-</button>
-                    <input type="text" value="1" class="count" id="count">
-                    <button class="addBtn">+</button>
+                        <button type="button" class="subBtn">-</button>
+                        <input type="text" value="1" class="count" id="count">
+                        <button class="addBtn">+</button>
                 </span>
                 </p>
             </li>
