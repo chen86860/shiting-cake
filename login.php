@@ -173,7 +173,7 @@ cici;
         </ul>
     </form>
 </div>
-<div class="fooer-helper"></div>
+<div class="footer-helper"></div>
 <footer>
     <div class="footer-warp-container">
         <div class="footer-comm">

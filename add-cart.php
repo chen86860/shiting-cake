@@ -8,7 +8,6 @@ if (!isset($_SESSION['id'])) {
     );
 } else {
 
-
     $goodId = $_POST['goodId'];
     $count = $_POST['count'];
     $userId = $_SESSION['id'];

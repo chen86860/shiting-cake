@@ -2,75 +2,54 @@
 /**
  * Created by PhpStorm.
  * User: 星星
- * Date: 2017/04/28
- * Time: 1:09
+ * Date: 2017/04/30
+ * Time: 20:44
  */
-function redirect($string)
-{
-    echo '<script language = \'javascript\' type = \'text/javascript\' > ';
-    echo "window.location.href = '$string' ";
-    echo '</script>';
-}
-
-if (isset($_COOKIE['username'])) {
-    $username = $_COOKIE['username'];
-} else {
-    redirect("/index.php");
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("location:./login.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>注册成功-- cic</title>
+    <title>订单结算-- Cic cake</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
-        .reg-succed {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 200px;
+        .order-succed {
+            width: 1200px;
+            margin: 20px auto;
         }
 
-        .reg-succed div {
-            width: 100%;
-            text-align: center;
-        }
-
-        .reg a {
+        .order a {
             border: none !important;
         }
 
-        .reg-succed a {
+        .order-succed a {
             border: none !important;
             display: inline-block;
-            width: 120px;
-            height: 43px;
+            width: 162px;
+            height: 48px;
             background-color: #d65164;
             color: #fff;
-            line-height: 43px;
+            line-height: 48px;
             margin: 80px 0;
             border-radius: 4px;
-            transition: background-color 600ms ease-out;
         }
 
-        .reg-succed a:hover {
-            background-color: #e46073;
+        .order-succed a:hover {
+            background-color: #d65164;
         }
 
-        .reg-succed img {
-            width: 60px;
-            padding: 0 10px 0;
-        }
-
-        h1 {
-            color: #1d1d1d;
+        .order-succed > h1 {
+            font-size: 24px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-top: 0;
+            padding-left: 20px;
             font-weight: 400;
-            display: flex;
-            font-size: 20px;
-            align-items: center;
-            justify-content: center;
         }
     </style>
 </head>
@@ -85,19 +64,25 @@ if (isset($_COOKIE['username'])) {
         <li>
         </li>
         <li><span class="reg">
-                    <a href="#">
-                        <?php echo $username ?>
-                    </a>
+                      <?php
+                      if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
+                          echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                      } else {
+                          echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
+                      }
+                      ?>
                     </span>
         </li>
     </ul>
 </nav>
-<div class="reg-succed">
-    <div><img src="./img/finished.png" alt="">
-        <h1>注册成功！立即开始购物吧！</h1>
+<div class="order-succed">
+    <h1>填写并核对订单信息</h1>
+    <div class="order-wrap">
+        <div class="address-h3 h3">
+            <h3>收货人信息</h3>
+        </div>
+        <h3></h3>
     </div>
-    <div>
-        <a href="index.php">立即开始</a></div>
 </div>
 <div class="footer-helper"></div>
 <footer>

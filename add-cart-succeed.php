@@ -32,10 +32,6 @@ if (!isset($_SESSION['id'])) {
             text-align: center;
         }
 
-        .cart a {
-            border: none !important;
-        }
-
         .cart-succed a {
             border: none !important;
             display: inline-block;
@@ -84,9 +80,9 @@ if (!isset($_SESSION['id'])) {
         <h1>商品已成功加入购物车！</h1>
     </div>
     <div>
-        <a href="shop-cart.php">去购物车结算</a></div>
-    </div>
-<div class="fooer-helper"></div>
+        <a href="cart.php">去购物车结算</a></div>
+</div>
+<div class="footer-helper"></div>
 <footer>
     <div class="footer-warp-container">
         <div class="footer-comm">

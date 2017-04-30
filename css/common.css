@@ -126,7 +126,7 @@ nav > ul > li:first-child {
 }
 
 .border-l {
-    border-right: 1px solid #d65164;
+    border-right: 1px solid #d65164 !important;
 }
 
 footer {
@@ -178,7 +178,7 @@ footer a:hover {
     width: 28px;
 }
 
-.fooer-helper {
+.footer-helper {
     padding-bottom: 200px;
 }
 

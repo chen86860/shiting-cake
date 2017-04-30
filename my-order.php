@@ -21,8 +21,8 @@ if (!isset($_SESSION['id'])) {
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
         .order-succed {
-            text-align: center;
-            margin: 300px auto;
+            width: 1200px;
+            margin: 20px auto;
         }
 
         .order a {
@@ -45,9 +45,13 @@ if (!isset($_SESSION['id'])) {
             background-color: #d65164;
         }
 
-        .order-succed h1 {
-            color: #1d1d1d;
-            font-weight: 300;
+        .order-succed > h1 {
+            font-size: 24px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-top: 0;
+            padding-left: 20px;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -61,7 +65,7 @@ if (!isset($_SESSION['id'])) {
     <ul>
         <li>
         </li>
-        <li><span class="order">
+        <li><span class="reg">
                       <?php
                       if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
                           echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
@@ -76,7 +80,7 @@ if (!isset($_SESSION['id'])) {
 <div class="order-succed">
     <h1>我的订单</h1>
 </div>
-<div class="fooer-helper"></div>
+<div class="footer-helper"></div>
 <footer>
     <div class="footer-warp-container">
         <div class="footer-comm">

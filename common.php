@@ -14,6 +14,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'signOut') {
         'errmsg' => 'success',
         'data' => true,
     );
+    echo json_encode($response);
+    exit;
 }
 try {
     include "conn.php";

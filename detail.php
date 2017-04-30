@@ -175,7 +175,7 @@ cici;
         <li><span class="reg">
                     <?php
                     if (isset($_SESSION['id']) && isset($_COOKIE['username'])) {
-                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut('" . $_COOKIE['username'] . "')>退出</a>";
+                        echo '<a class="border-l" href=./my-order.php>' . $_COOKIE['username'] . "</a><a href=javascript:signOut()>退出</a>";
                     } else {
                         echo '<a href="login.php" class="border-l">登录</a><a href="register.php">注册</a>';
                     }
@@ -184,7 +184,7 @@ cici;
         </li>
         <li><span class="cart">
                     <img src="img/cart-color.svg" alt="">
-                    <a href="shop-cart.php">我的购物车</a>
+                    <a href="cart.php">我的购物车</a>
                     </span>
         </li>
     </ul>
@@ -286,6 +286,18 @@ cici;
     addBtn.addEventListener('click', (e) => {
         count.value++;
     })
+
+    function signOut() {
+        var data = "action=signOut"
+        postData('./common.php', 'post', data, function (res) {
+            console.log(res)
+            if (JSON.parse(res)['code'] === 0) {
+                location.href = "./index"
+            } else {
+                alert("e...网络故障")
+            }
+        })
+    }
     function addCart(id) {
         var data = "goodId=" + id + "&count=" + parseInt(document.querySelector(".count").value)
         postData('./add-cart.php', 'post', data, function (result) {

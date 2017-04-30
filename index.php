@@ -59,7 +59,7 @@ mysqli_close($link);
             </li>
             <li><span class="cart">
                 <img src="img/cart-color.svg" alt="">
-                <a href="shop-cart.php">我的购物车</a>
+                <a href="cart.php">我的购物车</a>
                 </span>
             </li>
         </ul>
@@ -191,6 +191,7 @@ for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
     function signOut() {
         var data = "action=signOut"
         postData('./common.php', 'post', data, function (res) {
+            console.log(res)
             if (JSON.parse(res)['code'] === 0) {
                 location.href = "./index"
             } else {
