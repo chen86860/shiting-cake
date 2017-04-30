@@ -481,7 +481,7 @@ cici;
             })
         });
         updatecart.checkAllChange()
-        // 全部选择盒子状态
+        // 全部选择盒子状
         allCheckbox.addEventListener('change', (e) => {
             updatecart.checkAll(e.target.checked)
         })
