@@ -25,6 +25,7 @@ cici;
 
         if ($num != 0) {
             setcookie('username', $username);
+            setcookie('address', $result['address']);
             $_SESSION['id'] = $result['id'];
             redirect("./index.php");
         } else {
@@ -44,6 +45,7 @@ cici;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登录 - CiC Cake</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="icon" href="favicon.ico">
     <style>
         .userlogin {
             min-width: 1200px;

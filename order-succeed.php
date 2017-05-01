@@ -22,11 +22,11 @@ if (isset($_COOKIE['username'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>注册成功-- cic</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <title>支付成功 - Cic cake</title>
     <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <style>
-        .reg-succed {
+        .order-succed {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -34,16 +34,16 @@ if (isset($_COOKIE['username'])) {
             margin-top: 200px;
         }
 
-        .reg-succed div {
+        .order-succed div {
             width: 100%;
             text-align: center;
         }
 
-        .reg a {
+        .order a {
             border: none !important;
         }
 
-        .reg-succed a {
+        .order-succed a {
             border: none !important;
             display: inline-block;
             width: 120px;
@@ -56,11 +56,11 @@ if (isset($_COOKIE['username'])) {
             transition: background-color 600ms ease-out;
         }
 
-        .reg-succed a:hover {
+        .order-succed a:hover {
             background-color: #e46073;
         }
 
-        .reg-succed img {
+        .order-succed img {
             width: 60px;
             padding: 0 10px 0;
         }
@@ -85,7 +85,7 @@ if (isset($_COOKIE['username'])) {
     <ul>
         <li>
         </li>
-        <li><span class="reg">
+        <li><span class="order">
                     <a href="#">
                         <?php echo $username ?>
                     </a>
@@ -93,12 +93,12 @@ if (isset($_COOKIE['username'])) {
         </li>
     </ul>
 </nav>
-<div class="reg-succed">
+<div class="order-succed">
     <div><img src="./img/finished.png" alt="">
-        <h1>注册成功！立即开始购物吧！</h1>
+        <h1>支付成功！我们尽快会为你发货！</h1>
     </div>
     <div>
-        <a href="index.php">立即开始</a></div>
+        <a href="./my-order.php">查看订单</a></div>
 </div>
 <div class="footer-helper"></div>
 <footer>

@@ -25,6 +25,7 @@ mysqli_close($link);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CiC Cake</title>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
@@ -216,6 +217,58 @@ for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
             return false
         }
     }
+    var addLoadEvent = (func) => {
+        var oldLoad = window.onload
+        if (typeof window.onload !== 'funcation') {
+            window.onload = func
+        } else {
+            window.onload = () => {
+                oldLoad()
+                func()
+            }
+        }
+
+    }
+    var returnTop = () => {
+        // 添加返回按钮
+        var btnElm = document.createElement('div')
+        btnElm.id = 'btnTop'
+        document.body.appendChild(btnElm)
+
+        // 定义计时器
+        var timer = null;
+        // 定义是否抵达顶部布尔值判断；
+        var isTop = true;
+        var btnTop = document.querySelector('#btnTop')
+
+        addEventListener('scroll', (e) => {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+            btnTop.style.display = scrollTop >= 400 ? 'inline-block' : 'none'
+            // 判断是否抵达顶部，若否，停止计时器
+            if (!isTop) {
+                clearInterval(timer);
+            }
+            // 重置布尔值判断
+            isTop = false
+        })
+        btnTop.addEventListener('click', () => {
+            // 设置计时器，50毫秒间隔
+            timer = setInterval(() => {
+                // 到顶部距离
+                var toTop = document.documentElement.scrollTop || document.body.scrollTop
+                // 速度，根据顶部距离判断得之
+                var speed = Math.ceil(toTop / 4)
+                // 顶部减去速度,得到位置
+                document.documentElement.scrollTop = document.body.scrollTop = toTop - speed
+                if (!toTop) {
+                    clearInterval(timer)
+                }
+                isTop = true
+            }, 50)
+        })
+    }
+
+    addLoadEvent(returnTop)
 </script>
 </body>
 </html>

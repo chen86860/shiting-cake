@@ -334,6 +334,25 @@ footer {
 .border-l {
     border-right: 1px solid #d65164;
 }
-.cart img{
+
+.cart img {
     width: 20px;
+}
+
+#btnTop {
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0 0 9px rgba(226, 226, 226, 0.48);
+    border: 1px solid #f1f1f1;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDkyNzQ0NTU1NTMzIiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjIzNzQiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNzY4IDY0MGwtMjU2LTI1Ni0yNTYgMjU2eiIgcC1pZD0iMjM3NSIgZmlsbD0iIzcwNzA3MCI+PC9wYXRoPjwvc3ZnPg==');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 20px;
 }

@@ -18,6 +18,7 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <title>cic</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="icon" href="favicon.ico">
     <style>
         .cart-succed {
             display: flex;

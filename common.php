@@ -171,6 +171,27 @@ cici;
             );
         }
     }
+    // 创建订单
+    if (isset($_POST['action']) && $_POST['action'] == 'createOrder') {
+        $sql_order_create = <<<cici
+insert into orders(userId,goodId,goodImg,title,`count`,price,date) (select userId,goodId,img,title,`count`,price,NOW() from cart where checked = 1 and userId = $userId);
+delete from cart where checked = 1 and userId = $userId
+cici;
+        $link->multi_query($sql_order_create);
+        if (mysqli_affected_rows($link) > 0) {
+            $response = array(
+                'code' => 0,
+                'errmsg' => 'success',
+                'data' => '',
+            );
+        } else {
+            $response = array(
+                'code' => -1,
+                'errmsg' => 'bad',
+                'data' => 'err',
+            );
+        }
+    }
     mysqli_close($link);
 } catch (Exception $e) {
     $response = array(

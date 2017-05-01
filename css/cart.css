@@ -159,7 +159,7 @@
     align-items: center;
 }
 
-.shop-cls-check > button {
+.shop-cls-check > a {
     background-color: #d65164;
     border: 0;
     width: 130px;
@@ -171,6 +171,8 @@
     outline: none;
     height: 100%;
     display: inline-block;
+    text-decoration: none;
+    line-height: 50px;
 }
 
 .cart-del {

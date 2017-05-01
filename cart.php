@@ -26,6 +26,7 @@ cici;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>购物车 - Cic cake</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
@@ -121,9 +122,9 @@ cici;
                     0
                     </span>
             </p>
-            <button>
+            <a href="create-order.php" class="create-order">
                 结算
-            </button>
+            </a>
         </div>
     </div>
 </div>
@@ -179,6 +180,7 @@ cici;
             goodsWrap = doc.querySelector('.shop-car-wrap'),
             cartCount = doc.getElementsByClassName('list-good-wrap'),
             loginOut = doc.querySelector('.loginOut'),
+            createOrder = doc.querySelector('.create-order'),
             totalMi = 0
 
         let updateCart = () => {
@@ -421,6 +423,15 @@ cici;
                 }
             })
             e.preventDefault()
+        })
+        // 创建订单
+        createOrder.addEventListener('click', (e) => {
+            if (parseInt(totalCount.innerText, 10) === 0) {
+                alert('e...你忘记选中商品了')
+            } else {
+                location.href = './create-order.php'
+            }
+            e.preventDefault();
         })
     })
     (document, window);
