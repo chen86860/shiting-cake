@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-04-30 11:38:15
+Date: 2017-05-01 11:22:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,21 +27,18 @@ CREATE TABLE `cart` (
   `count` varchar(255) DEFAULT NULL,
   `userId` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
+  `checked` int(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
-INSERT INTO `cart` VALUES ('1', '5', '百花翻糖蛋糕', 'img/goods/3.png', '5', '1', '78.00');
-INSERT INTO `cart` VALUES ('2', '6', '抹茶冻芝士蛋糕', 'img/goods/4.png', '3', '1', '98.00');
-INSERT INTO `cart` VALUES ('3', '4', '芒果千层蛋糕', 'img/goods/2.png', '1', '1', '108.00');
-INSERT INTO `cart` VALUES ('4', '12', '特抹茶巧克力冰激凌', 'img/goods/10.png', '3', '1', '18.00');
-INSERT INTO `cart` VALUES ('5', '1', '芭比·草莓巧克力蛋糕', 'img/promote1.png', '1', '1', '16.00');
-INSERT INTO `cart` VALUES ('6', '9', '原味甜甜圈', 'img/goods/7.png', '1', '7', '5.00');
-INSERT INTO `cart` VALUES ('7', '2', '草莓白色奶油蛋糕水果蛋糕', 'img/promote2.png', '2', '7', '88.00');
-INSERT INTO `cart` VALUES ('8', '1', '芭比·草莓巧克力蛋糕', 'img/promote1.png', '7', '5', '16.00');
-INSERT INTO `cart` VALUES ('9', '2', '草莓白色奶油蛋糕水果蛋糕', 'img/promote2.png', '1', '5', '88.00');
+INSERT INTO `cart` VALUES ('1', '5', '百花翻糖蛋糕', 'img/goods/3.png', '5', '1', '78.00', '0');
+INSERT INTO `cart` VALUES ('2', '6', '抹茶冻芝士蛋糕', 'img/goods/4.png', '3', '1', '98.00', '0');
+INSERT INTO `cart` VALUES ('3', '4', '芒果千层蛋糕', 'img/goods/2.png', '1', '1', '108.00', '0');
+INSERT INTO `cart` VALUES ('36', '2', '草莓白色奶油蛋糕水果蛋糕', 'img/promote2.png', '3', '9', '88.00', '1');
+INSERT INTO `cart` VALUES ('37', '1', '芭比·草莓巧克力蛋糕', 'img/promote1.png', '3', '9', '16.00', '1');
 
 -- ----------------------------
 -- Table structure for goods
@@ -62,7 +59,7 @@ CREATE TABLE `goods` (
   `img-4` varchar(255) DEFAULT NULL,
   `hot` varchar(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods
@@ -80,13 +77,13 @@ INSERT INTO `goods` VALUES ('10', '马卡龙', null, null, '36.00', '42', '32', 
 INSERT INTO `goods` VALUES ('11', '马卡龙泡芙塔', null, null, '12.00', '21', '75', 'img/goods/9.png', null, null, null, null, '0');
 INSERT INTO `goods` VALUES ('12', '特抹茶巧克力冰激凌', null, null, '18.00', '22', '14', 'img/goods/10.png', null, null, null, null, '0');
 INSERT INTO `goods` VALUES ('13', '芒果冰激凌鸡蛋仔', null, null, '25.00', '30', '42', 'img/goods/11.png', null, null, null, null, '0');
-INSERT INTO `goods` VALUES ('14', '草莓蛋糕皇后', null, null, '13.00', '30', '75', 'img/goods/11.png', null, null, null, null, '0');
+INSERT INTO `goods` VALUES ('14', '草莓蛋糕皇后', null, null, '13.00', '30', '75', 'img/goods/12.png', null, null, null, null, '0');
 
 -- ----------------------------
--- Table structure for order
+-- Table structure for orders
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` varchar(255) DEFAULT NULL,
   `goodId` varchar(255) DEFAULT NULL,
@@ -95,12 +92,15 @@ CREATE TABLE `order` (
   `count` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of order
+-- Records of orders
 -- ----------------------------
+INSERT INTO `orders` VALUES ('30', '9', '2', 'img/promote2.png', '草莓白色奶油蛋糕水果蛋糕', '2', '88.00', null, '2017-05-01 11:01:51');
+INSERT INTO `orders` VALUES ('31', '9', '1', 'img/promote1.png', '芭比·草莓巧克力蛋糕', '2', '16.00', null, '2017-05-01 11:01:51');
 
 -- ----------------------------
 -- Table structure for userdata
@@ -113,11 +113,12 @@ CREATE TABLE `userdata` (
   `nickname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `mobile` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of userdata
 -- ----------------------------
-INSERT INTO `userdata` VALUES ('1', 'cici', 'df50ed48b1937b1ae1d3396dcc6e52c6', 'cici', 'cici@126.com', '18814182583');
-INSERT INTO `userdata` VALUES ('5', 'jack', '562145c26e65188fb44bb7e92487beaa', 'Jack_Chen', 'chen86860@126.com', '18814183822');
+INSERT INTO `userdata` VALUES ('5', 'jack', '562145c26e65188fb44bb7e92487beaa', 'Jack_Chen', 'chen86860@126.com', '18814183822', '陈龙 广东 江门市 蓬江区 城区五邑大学 188****3822');
+INSERT INTO `userdata` VALUES ('9', 'cici', 'dd67c21a53f1522aae924956388b9d72', 'æ¢è¯—å©·', 'cici@126.com', '18814182583', '梁诗婷 广东 江门市 蓬江区 城区五邑大学 188****2583');
