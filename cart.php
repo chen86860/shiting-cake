@@ -4,9 +4,7 @@ if (!isset($_SESSION['id'])) {
     header("location:./login.php");
     exit;
 }
-
-$userId = $_SESSION['id'];
-$session_id = session_id();
+$userId = $_SESSION['id'];  //13
 try {
     include "conn.php";
     $sql_cart = <<<cici
@@ -21,7 +19,7 @@ cici;
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -294,8 +292,6 @@ cici;
                 },
                 setTotal: (t, op) => {
                     if (op === 'sub') {
-                        console.log((parseInt(totalPrice.innerText, 10)));
-                        console.log('T', t);
                         totalPrice.innerText = (parseInt(totalPrice.innerText, 10)) - t + '.00';
                     } else if (op === 'add') {
                         totalPrice.innerText = (parseInt(totalPrice.innerText, 10)) + t + '.00';

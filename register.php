@@ -1,24 +1,20 @@
 <?php
 session_start();
-//网站跳转
-function redirect($string)
-{
-    echo '<script language = \'javascript\' type = \'text/javascript\' > ';
-    echo "window.location.href = '$string' ";
-    echo '</script>';
-}
 
-//判断用户是否存在
+// 判断是否提交username
 if (isset($_POST['username']) && $_POST['username'] != "") {
     $username = $_POST['username'];
 }
+// 判断是否提交password
 if (isset($_POST['password']) && $_POST['password'] != "") {
     $random_str = "9-l,.gf043";
     $password = md5($_POST['password'] . $_POST['username'] . $random_str);
 }
+// 判断是否提交nickname
 if (isset($_POST['nickname']) && $_POST['nickname'] != "") {
     $nickname = $_POST['nickname'];
 }
+// 判断是否提交email
 if (isset($_POST['email']) && $_POST['email'] != "") {
     $email = $_POST['email'];
 }
@@ -26,18 +22,19 @@ if (isset($_POST['mobile']) && $_POST['mobile'] != "") {
     $mobile = $_POST['mobile'];
     try {
         include "conn.php";
-        $sql_login = <<<cici
-select * from userdata where username = '$username' and password = '$password';
-cici;
         $sql_reg_insert = <<<cici
 insert into userdata(username,password,nickname,email,mobile) values('$username','$password','$nickname','$email','$mobile');
 cici;
+        $sql_login = <<<cici
+select * from userdata where username = '$username' and password = '$password';
+cici;
         mysqli_query($link, $sql_reg_insert);
-        if (mysqli_affected_rows($link)) {
+        if (mysqli_affected_rows($link)!=0) {
             $result = mysqli_fetch_assoc(mysqli_query($link, $sql_login));
-            setcookie('username', $username);
-            $_SESSION['id'] = $result['id'];
-            redirect("./reg-succeed.php");
+
+            setcookie('username', $username); //cici
+            $_SESSION['id'] = $result['id']; // 9
+            header("location:./reg-succeed.php");
         } else {
             echo "bad!";
             exit;
@@ -400,7 +397,7 @@ cici;
                 },
                 email: () => {
                     sign.add('email')
-                    if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(email.value)) {
+                    if (!(  /).test(email.value)) {
                         tip.error('邮箱格式不正确', "emailValidator")
                         return false
                     } else {

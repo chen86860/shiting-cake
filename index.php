@@ -17,6 +17,7 @@ $res_promotion = mysqli_fetch_all(mysqli_query($link, $sql_promotion), MYSQL_ASS
 // goods
 $res_goods = mysqli_fetch_all(mysqli_query($link, $sql_goods), MYSQL_ASSOC);
 
+
 mysqli_close($link);
 
 ?>
@@ -140,9 +141,9 @@ mysqli_close($link);
     <p>Selling product</p>
 </div>
 <?php
-for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {
+for ($j = 0; $j < sizeof($res_goods) / 4; $j++) {  // j:0,1,2
     echo '<div class="goods"><div class="goods-warp">';
-    for ($i = $j * 4; $i <= ($j + 1) * 4 - 1; $i++) {
+    for ($i = $j * 4; $i < ($j + 1) * 4; $i++) {
         echo "<div>
                     <a href=detail.php?id=" . $res_goods[$i]['id'] . "><img src='" . $res_goods[$i]['img'] . "' alt=''>
                     </a>

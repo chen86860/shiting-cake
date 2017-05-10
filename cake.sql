@@ -120,5 +120,5 @@ CREATE TABLE `userdata` (
 -- ----------------------------
 -- Records of userdata
 -- ----------------------------
-INSERT INTO `userdata` VALUES ('5', 'jack', '562145c26e65188fb44bb7e92487beaa', 'Jack_Chen', 'chen86860@126.com', '18814183822', '陈龙 广东 江门市 蓬江区 城区五邑大学 188****3822');
+INSERT INTO `userdata` VALUES ('5', 'jack', '562145c26e65188fb44bb7e92487beaa', 'Jack_Chen', 'chen86860@126.com', '1881418o', '陈龙 广东 江门市 蓬江区 城区五邑大学 188****3822');
 INSERT INTO `userdata` VALUES ('9', 'cici', 'dd67c21a53f1522aae924956388b9d72', 'æ¢è¯—å©·', 'cici@126.com', '18814182583', '梁诗婷 广东 江门市 蓬江区 城区五邑大学 188****2583');

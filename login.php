@@ -1,17 +1,10 @@
 <?php
 session_start();
-//网站跳转
 $errmsg = "";
-function redirect($string)
-{
-    echo '<script language = \'javascript\' type = \'text/javascript\' > ';
-    echo "window.location.href = '$string' ";
-    echo '</script>';
-}
 
 //登录判断
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
+    $username = $_POST['username'];  // cici
     $random_str = "9-l,.gf043";
     $password = md5($_POST['password'] . $_POST['username'] . $random_str);
     try {
@@ -26,8 +19,9 @@ cici;
         if ($num != 0) {
             setcookie('username', $username);
             setcookie('address', $result['address']);
-            $_SESSION['id'] = $result['id'];
-            redirect("./index.php");
+
+            $_SESSION['id'] = $result['id']; // 5
+            header("location:./index.php");
         } else {
             $errmsg = "用户名或密码错误";
         }
@@ -146,7 +140,7 @@ cici;
         </span>
 </nav>
 <div class="userlogin">
-    <form action="login.php" method="post" class="userlogin">
+    <form action="login.php" method="get" class="userlogin">
         <ul>
             <li>
                 <p class="text1">
@@ -159,7 +153,7 @@ cici;
                     <input type="password" placeholder="密码" name="password">
                     <span class="errmsg">
                         <?php if ($errmsg != "") {
-                            echo $errmsg;
+                            echo $errmsg
                         } ?>
                     </span>
                 </p>

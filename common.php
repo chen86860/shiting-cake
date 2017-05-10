@@ -152,7 +152,7 @@ cici;
             );
         }
     }
-    // 更改购物车物品全部选中状态
+    // 删除购物车物品
     if (isset($_POST['action']) && $_POST['action'] == 'cartGoodDel' && isset($_POST['id'])) {
         $goodId = $_POST['id'];
         $sql_good_check = "delete from cart where userId = $userId and goodId = $goodId";
